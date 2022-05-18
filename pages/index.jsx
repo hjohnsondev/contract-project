@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -15,7 +15,7 @@ import TestimonialSection from '../components/TestimonialSection';
 
 
 
-const Home: NextPage/*<{ exampleVariable: ExampleType }> from types.ts*/ = (props/*{ exampleVariable }*/) => {
+const Home/*<{ exampleVariable: ExampleType }> from types.ts*/ = (props/*{ exampleVariable }*/) => {
 
   return (
     <div>
@@ -37,7 +37,7 @@ const Home: NextPage/*<{ exampleVariable: ExampleType }> from types.ts*/ = (prop
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps = async () => {
 
   const headerData = await getAllHeaderData();
   const heroImageData = await getHeroImageData();

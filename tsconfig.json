@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/api.js", "pages/index.jsx", "components/TestimonialSection.jsx", "components/TestimonialCard.jsx", "components/SectionCard.jsx", "components/HeroImage.jsx", "components/Header.jsx", "components/CardsSection.jsx"],
   "exclude": ["node_modules"]
 }
