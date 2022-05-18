@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import Header from '../components/Header';
 import HeroImage from '../components/HeroImage';
-import Cards from '../components/Cards';
+import CardsSection from '../components/CardsSection';
 
 import Icon from '@mdi/react'
 import styles from '../styles/Home.module.css'
@@ -28,8 +28,8 @@ const Home: NextPage/*<{ exampleVariable: ExampleType }> from types.ts*/ = (prop
       <main className='relative'>
         <Header headerData={props.headerData}/>
         <HeroImage heroImageCollection={props.heroImageData}/>
-        <Cards cardData={props.cardData} style={'icon'}/>
-        <Cards cardData={props.cardData} style={'image'} />
+        <CardsSection cardData={props.cardData} style={"icon"}/>
+        <CardsSection cardData={props.cardData} style={"image"}/>
         <SectionCard sectionData={props.sectionData} />
         <TestimonialSection testimonialData={props.testimonialData}/>
       </main>
