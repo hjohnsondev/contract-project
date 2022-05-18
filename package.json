@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.12.1",
+    "@mdi/font": "^6.6.96",
+    "@mdi/js": "^6.6.96",
+    "@mdi/react": "^1.6.0",
     "autoprefixer": "^10.4.7",
     "contentful": "^9.1.28",
     "next": "12.1.6",
