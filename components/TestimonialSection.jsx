@@ -11,8 +11,8 @@ function TestimonialSection ({testimonialData}) {
             </div>}
             <div className="flex snap-x overflow-x-scroll pb-10 hide-scroll-bar">
                 <div className="flex flex-nowrap">
-                    {testimonials.map((testimonial) => {
-                        return <TestimonialCard testimonial={testimonial}/>
+                    {testimonials.map((testimonial, index) => {
+                        return <TestimonialCard key={index} testimonial={testimonial}/>
                     })}
                 </div>
             </div>

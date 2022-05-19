@@ -32,14 +32,14 @@ function HeroImage ({heroImageCollection}) {
                             <h1 className={`text-6xl md:w-[32rem] mb-2 ${textAlignment} ${heroImageCollection.heroImageCollection.items[0].darkenImage ? 'text-white' : 'text-black'}`}><strong>{heroImageCollection.heroImageCollection.items[0].headline}</strong></h1>
                             {document && <div className={`text-xl md:w-[32rem] mb-3 ${textAlignment} ${heroImageCollection.heroImageCollection.items[0].darkenImage ? 'text-white' : 'text-black'}`}>{documentToReactComponents(document)}</div>}
                             <div className={`${actionAlignment} ${heroImageCollection.heroImageCollection.items[0].actionAlignment == "Horizontal" ? "flex" : "flex flex-col"}`}>
-                                {actions.map((action) => {
+                                {actions.map((action, index) => {
                                     if (action.theme == "primary") {
                                         return (
-                                            <button className="px-7 py-2 mr-3 mb-3 bg-blue-500 text-white font-semibold rounded shadow-md hover:bg-white hover:text-blue-600">{action.label}</button>
+                                            <button key={index} className="px-7 py-2 mr-3 mb-3 bg-blue-500 text-white font-semibold rounded shadow-md hover:bg-white hover:text-blue-600">{action.label}</button>
                                         )
                                     }
                                     return (
-                                        <button className={`px-7 py-2 mr-3 mb-3 font-semibold rounded border-solid border-2 border-neutral-400 shadow-md hover:bg-blue-500 hover:text-white ${heroImageCollection.heroImageCollection.items[0].darkenImage ? 'text-white bg-grey-800' : 'text-black bg-white'}`}>{action.label}</button>
+                                        <button key={index} className={`px-7 py-2 mr-3 mb-3 font-semibold rounded border-solid border-2 border-neutral-400 shadow-md hover:bg-blue-500 hover:text-white ${heroImageCollection.heroImageCollection.items[0].darkenImage ? 'text-white bg-grey-800' : 'text-black bg-white'}`}>{action.label}</button>
                                     )
                                 })}
                             </div>
