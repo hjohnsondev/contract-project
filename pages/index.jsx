@@ -39,7 +39,7 @@ const Home = (props = null) => {
   )
 }
 
-export const getStaticProps = async () => {
+export async function getStaticProps() {
 
   const headerData = await getAllHeaderData();
   const heroImageData = await getHeroImageData();
@@ -48,7 +48,6 @@ export const getStaticProps = async () => {
   const testimonialData = await getAllTestimonialData();
 
   return {
-    
     props: {
       headerData: headerData,
       heroImageData: heroImageData,
