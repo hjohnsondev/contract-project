@@ -26,7 +26,6 @@ const Home = (props = null) => {
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css"></link>
       </Head>
       <main className='relative'>
-        <Header headerData={props.headerData}/>
         <HeroImage heroImageCollection={props.heroImageData}/>
         <CardsSection cardData={props.cardData} style={"icon"}/>
         <CardsSection cardData={props.cardData} style={"image"}/>
