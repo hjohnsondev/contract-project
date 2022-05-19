@@ -1,7 +1,7 @@
 import Link from "next/link";
 import TestimonialCard from "./TestimonialCard";
 
-function TestimonialSection ({testimonialData}) {
+function TestimonialSection ({testimonialData = null}) {
     const testimonials = testimonialData.setOfTestimonialsCollection.items[0].testimonialsCollection.items
     return (
         <div className="md:container md:mx-auto px-48 h-full">

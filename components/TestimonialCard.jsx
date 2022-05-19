@@ -1,6 +1,6 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-function TestimonialCard ({testimonial}) {
+function TestimonialCard ({testimonial = null}) {
     let testimonialText = testimonial.testimonial.json;
     return (
         <div className='inline-block w-50 h-50'>

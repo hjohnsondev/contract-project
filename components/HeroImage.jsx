@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-function HeroImage ({heroImageCollection}) {
+function HeroImage ({heroImageCollection = null}) {
     const actions = heroImageCollection.heroImageCollection.items[0].actionsCollection.items;
     let contentAlignment;
     if (heroImageCollection.heroImageCollection.items[0].sectionAlignment == "Left") {

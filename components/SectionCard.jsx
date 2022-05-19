@@ -1,5 +1,5 @@
 import Link from "next/link";
-function SectionCard ({sectionData}) {
+function SectionCard ({sectionData = null}) {
     const section = sectionData.cardCollection.items.find((card) => card.customIcon)
 
     return (

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function Header ({headerData}) {
+function Header ({headerData = null}) {
     const icons = headerData.headerCollection.items[0].actionsCollection.items;
     const headerCards = headerData.headerCollection.items[0].logoCardsCollection.items;
     const navigationItems = headerData.headerCollection.items[0].navigationMenu.navigationItemsCollection.items;
