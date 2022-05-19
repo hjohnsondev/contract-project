@@ -1,6 +1,6 @@
 import Link from "next/link";
 function SectionCard ({sectionData = null}) {
-    const section = sectionData.cardCollection.items.find((card) => card.customIcon)
+    const section = sectionData?.cardCollection?.items?.find((card) => card.customIcon)
 
     return (
         <div className="relative flex items-center justify-center overflow-visible w-full h-[46rem]">
