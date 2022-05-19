@@ -9,7 +9,7 @@ import CardsSection from '../components/CardsSection';
 
 import Icon from '@mdi/react'
 import styles from '../styles/Home.module.css'
-import { getAllCardData, getAllCardsForHeader, getAllHeaderData, getAllTestimonialData, getCardSectionData, getHeroImageData } from '../utils/api'
+import { getAllCardData, getAllHeaderData, getAllTestimonialData, getCardSectionData, getHeroImageData } from '../utils/api'
 import SectionCard from '../components/SectionCard';
 import TestimonialSection from '../components/TestimonialSection';
 

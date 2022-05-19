@@ -1,10 +1,17 @@
 import Link from "next/link";
 
 function Header ({headerData = null}) {
-    const icons = headerData.headerCollection.items[0].actionsCollection.items;
-    const headerCards = headerData.headerCollection.items[0].logoCardsCollection.items;
-    const navigationItems = headerData.headerCollection.items[0].navigationMenu.navigationItemsCollection.items;
+
+    let icons;
+    let headerCards;
+    let navigationItems;
     const navArrow = <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" sstrokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+
+    if (headerData.headerCollection.items[0].actionsCollection.items && headerData.headerCollection.items[0].logoCardsCollection.items && headerData.headerCollection.items[0].navigationMenu.navigationItemsCollection.items) {
+        icons = headerData.headerCollection.items[0].actionsCollection.items;
+        headerCards = headerData.headerCollection.items[0].logoCardsCollection.items;
+        navigationItems = headerData.headerCollection.items[0].navigationMenu.navigationItemsCollection.items;
+    }
 
     return (
         <div>
