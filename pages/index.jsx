@@ -15,7 +15,7 @@ import TestimonialSection from '../components/TestimonialSection';
 
 
 
-const Home = (props) => {
+const Home = (props = null) => {
 
   return (
     <div>
