@@ -9,7 +9,7 @@ function CardsSection ({cardData = null, style}) {
         return (
             <div className="w-full bg-white top-0 left-0 h-full">
                 <div className="md:container md:mx-auto px-48 h-full">
-                    {cards.title && <div className="flex mt-16 flex-col items-center justify-center space-y-6">
+                    {cards?.title && <div className="flex mt-16 flex-col items-center justify-center space-y-6">
                         <h2 className=" text-4xl"><strong>{cards?.title}</strong></h2>
                         <hr className="border-2 border-sky-500 w-[5%]"/>
                     </div>}
