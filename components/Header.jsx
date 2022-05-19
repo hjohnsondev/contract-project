@@ -11,7 +11,7 @@ function Header ({headerData = null}) {
             <div className="w-full bg-slate-100 top-0 left-0 relative h-full">
                 <div className="md:container md:mx-auto px-48 h-full">
                     <div className="flex justify-between items-center h-full">
-                        <p className="text-gray-500 py-4">{headerData.headerCollection.items[0].tagline}</p>
+                        <p className="text-gray-500 py-4">{headerData?.headerCollection?.items[0]?.tagline}</p>
                         <div className="flex items-center h-full">
                             {icons.map((icon, index) => {
                                 return (
@@ -25,7 +25,7 @@ function Header ({headerData = null}) {
             <div className="w-full bg-white top-0 left-0 relative h-full">
                 <div className="md:container md:mx-auto px-48 h-full">
                     <div className="flex justify-between items-center h-full">
-                        <img className="py-7" src={headerData.headerCollection.items[0].logo.image.url} alt={headerData.headerCollection.items[0].logo.altText}/>
+                        <img className="py-7" src={headerData?.headerCollection?.items[0]?.logo?.image?.url} alt={headerData?.headerCollection?.items[0]?.logo?.altText}/>
                         <div className="flex items-center space-x-20 h-full">
                             {headerCards.map((card, index) => {
                                 return (
@@ -33,7 +33,7 @@ function Header ({headerData = null}) {
                                         <div className={`mr-3 text-4xl text-sky-500 mdi mdi-${card.materialDesignIcon.iconName}`}></div>  
                                         <div>
                                             <p><strong>{card.title}</strong></p>
-                                            <p className="text-gray-500">{card.subText}</p>
+                                            <p className="text-gray-500">{card?.subText}</p>
                                         </div>
                                     </div>
                                 )
@@ -55,7 +55,7 @@ function Header ({headerData = null}) {
                                 )
                             })}
                         </div>
-                        <a href=""><div className={`mdi mdi-${headerData.headerCollection.items[0].navigationMenu.icon} text-4xl text-white hover:text-sky-500`}></div></a>
+                        <a href=""><div className={`mdi mdi-${headerData?.headerCollection?.items[0]?.navigationMenu?.icon} text-4xl text-white hover:text-sky-500`}></div></a>
                     </div>
                 </div>
             </nav>
