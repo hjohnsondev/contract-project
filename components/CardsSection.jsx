@@ -33,11 +33,11 @@ function CardsSection ({cardData = null, style}) {
     return (
         <div className="w-full bg-white top-0 left-0 relative h-full">
             <div className="md:container md:mx-auto px-48 h-full">
-                {cards.title && <div className="flex flex-col items-center justify-center space-y-6">
+                {cards?.title && <div className="flex flex-col items-center justify-center space-y-6">
                     <h2 className=" text-4xl"><strong>{cards?.title}</strong></h2>
                     <hr className="border-2 border-sky-500 w-[5%]"/>
                 </div>}
-                <div className={`py-10 flex items-center h-full ${cards?.cardDisplayStyle == "Vertical" ? "flex-col justify-center space-y-16" : ""} ${cards?.cardsInARow < cards?.cardsCollection?.items?.length && cards.cardDisplayStyle == "Horizontal" ? "flex-wrap justify-around" : ""} ${cards?.cardsInARow >= cards?.cardsCollection?.items?.length ? "space-x-10" : ""}`}>
+                <div className={`py-10 flex items-center h-full ${cards?.cardDisplayStyle == "Vertical" ? "flex-col justify-center space-y-16" : ""} ${cards?.cardsInARow < cards?.cardsCollection?.items?.length && cards?.cardDisplayStyle == "Horizontal" ? "flex-wrap justify-around" : ""} ${cards?.cardsInARow >= cards?.cardsCollection?.items?.length ? "space-x-10" : ""}`}>
                     {cards?.cardsCollection?.items?.map((card, index) => {
                         return (
                             <div key={index} className={`flex basis-1/${cards?.cardsInARow} space-y-6 max-w-[32rem] flex-col m-0`}>
