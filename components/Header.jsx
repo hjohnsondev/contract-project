@@ -13,7 +13,7 @@ function Header ({headerData = null}) {
                     <div className="flex justify-between items-center h-full">
                         <p className="text-gray-500 py-4">{headerData?.headerCollection?.items[0]?.tagline}</p>
                         <div className="flex items-center h-full">
-                            {icons.map((icon, index) => {
+                            {icons?.map((icon, index) => {
                                 return (
                                     <a key={index} href=""><div className={`ml-3 text-2xl text-gray-500 hover:text-sky-500 mdi mdi-${icon.materialDesignIcon.iconName}`}></div></a>
                                 )
@@ -27,7 +27,7 @@ function Header ({headerData = null}) {
                     <div className="flex justify-between items-center h-full">
                         <img className="py-7" src={headerData?.headerCollection?.items[0]?.logo?.image?.url} alt={headerData?.headerCollection?.items[0]?.logo?.altText}/>
                         <div className="flex items-center space-x-20 h-full">
-                            {headerCards.map((card, index) => {
+                            {headerCards?.map((card, index) => {
                                 return (
                                     <div key={index} className="flex items-center ml-3 h-full">
                                         <div className={`mr-3 text-4xl text-sky-500 mdi mdi-${card.materialDesignIcon.iconName}`}></div>  
@@ -46,7 +46,7 @@ function Header ({headerData = null}) {
                 <div className="md:container md:mx-auto px-48 h-full">
                     <div className="flex justify-between items-center h-full">
                         <div className="flex space-x-8 h-full">
-                            {navigationItems.map((item, index) => {
+                            {navigationItems?.map((item, index) => {
                                 return (
                                     <div key={index} className="flex items-center h-full group">
                                         <button id={`dropdown${item.label}Button`} data-dropdown-toggle={`dropdown${item.label}`} className="py-4 text-white group-hover:text-sky-500"><strong>{item.label}</strong></button>
