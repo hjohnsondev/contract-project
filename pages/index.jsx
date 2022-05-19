@@ -25,6 +25,9 @@ const Home = (props = null) => {
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css"></link>
       </Head>
+      <header>
+        <Header headerData={props.headerData}/>
+      </header>
       <main className='relative'>
         <HeroImage heroImageCollection={props.heroImageData}/>
         <CardsSection cardData={props.cardData} style={"icon"}/>
