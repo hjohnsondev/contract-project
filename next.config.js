@@ -1,11 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    domains: [/* allowed domains */],
-    loader: "custom",
-    path: "/"
-  },
+  reactStrictMode: false,
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
