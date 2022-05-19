@@ -3,7 +3,7 @@ import Link from "next/link";
 function CardsSection ({cardData = null, style}) {
     const allCards = cardData?.setOfCardCollection?.items;
 
-    const cards = style == "icon" ? allCards.find((set) => set?.cardsCollection?.items[0]?.materialDesignIcon) : allCards.find((set) => set?.cardsCollection?.items[0]?.image)
+    const cards = style == "icon" ? allCards?.find((set) => set?.cardsCollection?.items[0]?.materialDesignIcon) : allCards?.find((set) => set?.cardsCollection?.items[0]?.image)
 
     if (style == "icon") {
         return (
