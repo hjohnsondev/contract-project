@@ -7,7 +7,6 @@ function Header ({headerData}) {
     const navArrow = <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" sstrokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
 
     return (
-        <>
         <div>
             <div className="w-full bg-slate-100 top-0 left-0 relative h-full">
                 <div className="md:container md:mx-auto px-48 h-full">
@@ -43,26 +42,24 @@ function Header ({headerData}) {
                     </div>
                 </div>
             </div>
-            
-        </div>
-        <nav className="bg-gray-800 top-0 w-full">
-            <div className="md:container md:mx-auto px-48 h-full">
-                <div className="flex justify-between items-center h-full">
-                    <div className="flex space-x-8 h-full">
-                        {navigationItems.map((item, index) => {
-                            return (
-                                <div key={index} className="flex items-center h-full group">
-                                    <button id={`dropdown${item.label}Button`} data-dropdown-toggle={`dropdown${item.label}`} className="py-4 text-white group-hover:text-sky-500"><strong>{item.label}</strong></button>
-                                    <div className="ml-0 group-hover:rotate-180">{navArrow}</div>
-                                </div>
-                            )
-                        })}
+            <nav className="bg-gray-800 top-0 w-full">
+                <div className="md:container md:mx-auto px-48 h-full">
+                    <div className="flex justify-between items-center h-full">
+                        <div className="flex space-x-8 h-full">
+                            {navigationItems.map((item, index) => {
+                                return (
+                                    <div key={index} className="flex items-center h-full group">
+                                        <button id={`dropdown${item.label}Button`} data-dropdown-toggle={`dropdown${item.label}`} className="py-4 text-white group-hover:text-sky-500"><strong>{item.label}</strong></button>
+                                        <div className="ml-0 group-hover:rotate-180">{navArrow}</div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        <a href=""><div className={`mdi mdi-${headerData.headerCollection.items[0].navigationMenu.icon} text-4xl text-white hover:text-sky-500`}></div></a>
                     </div>
-                    <a href=""><div className={`mdi mdi-${headerData.headerCollection.items[0].navigationMenu.icon} text-4xl text-white hover:text-sky-500`}></div></a>
                 </div>
-            </div>
-        </nav>
-        </>
+            </nav>
+        </div>
     )
 }
 

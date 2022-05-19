@@ -15,7 +15,7 @@ import TestimonialSection from '../components/TestimonialSection';
 
 
 
-const Home/*<{ exampleVariable: ExampleType }> from types.ts*/ = (props/*{ exampleVariable }*/) => {
+const Home = (props) => {
 
   return (
     <div>
