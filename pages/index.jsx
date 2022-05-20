@@ -6,16 +6,23 @@ import Image from 'next/image'
 import Header from '../components/Header';
 import HeroImage from '../components/HeroImage';
 import CardsSection from '../components/CardsSection';
+import { Layout } from '../components/Layout';
 
 import Icon from '@mdi/react'
 import styles from '../styles/Home.module.css'
-import { getAllCardData, getAllHeaderData, getAllTestimonialData, getCardSectionData, getHeroImageData } from '../utils/api'
+import { getHomeLandingPageData, getAllCardData, getAllHeaderData, getAllTestimonialData, getCardSectionData, getHeroImageData } from '../utils/api'
 import SectionCard from '../components/SectionCard';
 import TestimonialSection from '../components/TestimonialSection';
 
-
+  //<HeroImage heroImageCollection={props.heroImageData}/>
+  //<CardsSection cardData={props.cardData} style={"icon"}/>
+  //<CardsSection cardData={props.cardData} style={"image"}/>
+  //<SectionCard sectionData={props.sectionData} />
+  //<TestimonialSection testimonialData={props.testimonialData}/>
 
 const Home = (props = null) => {
+
+  console.log(props.landingData)
 
   return (
     <div>
@@ -25,15 +32,8 @@ const Home = (props = null) => {
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css"></link>
       </Head>
-      <header>
-        <Header headerData={props.headerData}/>
-      </header>
       <main className='relative'>
-        <HeroImage heroImageCollection={props.heroImageData}/>
-        <CardsSection cardData={props.cardData} style={"icon"}/>
-        <CardsSection cardData={props.cardData} style={"image"}/>
-        <SectionCard sectionData={props.sectionData} />
-        <TestimonialSection testimonialData={props.testimonialData}/>
+        <Layout landingData={props.landingData}/>
       </main>
     </div>
   )
@@ -41,19 +41,11 @@ const Home = (props = null) => {
 
 export async function getStaticProps() {
 
-  const headerData = await getAllHeaderData();
-  const heroImageData = await getHeroImageData();
-  const cardData = await getAllCardData();
-  const sectionData = await getCardSectionData();
-  const testimonialData = await getAllTestimonialData();
+  const landingData = await getHomeLandingPageData();
 
   return {
     props: {
-      headerData: headerData,
-      heroImageData: heroImageData,
-      cardData: cardData,
-      sectionData: sectionData,
-      testimonialData: testimonialData,
+      landingData
     }
   }
 }

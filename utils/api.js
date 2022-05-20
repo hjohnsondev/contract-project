@@ -306,3 +306,161 @@ export async function getAllTestimonialData () {
     const { data } = await response.json();
     return {...data};
 } 
+
+export async function getBlogPageLanding () {
+    const query = `
+    {
+        pageLanding(id: "4GxddBH3iN4GV7sqCDNjj0") {
+          sectionsCollection (limit: 5) {
+            items {
+              ... on AllBlogs {
+                internalName
+                blogsCollection (limit:10 skip:0) {
+                  total
+                  items {
+                    title
+                    slug
+                    excerpt
+                    date
+                    thumbnail {
+                        title
+                        description
+                        contentType
+                        url
+                        width
+                        height
+                    }
+                    category {
+                      categoryName
+                    }
+                    content {
+                      json
+                    }
+                  }
+                }
+              }
+              ... on AllCategories {
+                categoriesCollection (limit:10) {
+                  items {
+                    categoryName
+                  }
+                }
+              }
+              ... on Footer {
+                internalName
+              }
+              ... on Header {
+                internalName
+                tagline
+                maxWidth
+                logo {
+                  image {
+                    url
+                  }
+                  title
+                  altText
+                  focalPoint
+                }
+                actionsCollection (limit:10) {
+                  items {
+                    materialDesignIcon {
+                      iconName
+                    }
+                    label
+                    isExternal
+                    displayStyle
+                  }
+                }
+                navigationMenu {
+                  internalName
+                  icon
+                  navigationItemsCollection (limit:10) {
+                    items {
+                      label
+                      slug
+                    }
+                  }
+                }
+                logoCardsCollection (limit:10) {
+                  items {
+                    materialDesignIcon {
+                      iconName
+                    }
+                    internalName
+                    title
+                    titleSize
+                    subText
+                    iconSize
+                    imagePosition
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+
+    const response = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+        {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`
+            },
+            body: JSON.stringify({
+                query
+            })
+        }
+    )
+    const { data } = await response.json();
+    return {...data};
+}
+
+export async function getHomeLandingPageData () {
+    const contentful = require('contentful')
+
+    const client = contentful.createClient({
+        space: process.env.CONTENTFUL_SPACE_ID,
+        environment: 'master', // defaults to 'master' if not set
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+    })
+
+    const response = await client.getEntries();
+
+    const data = response.items.find((entry) => entry.fields.slug == "home")
+
+    return data;
+}
+
+export async function getAllLandingTypes () {
+    const contentful = require('contentful')
+
+    const client = contentful.createClient({
+        space: process.env.CONTENTFUL_SPACE_ID,
+        environment: 'master', // defaults to 'master' if not set
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+    })
+
+    const response = await client.getEntries();
+
+    const data = response.items.filter((entry) => entry.sys.contentType.sys.id == "pageLanding")
+
+    return data;
+}
+
+export async function getLandingBySlug(slug) {
+    const contentful = require('contentful')
+
+    const client = contentful.createClient({
+        space: process.env.CONTENTFUL_SPACE_ID,
+        environment: 'master', // defaults to 'master' if not set
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+    })
+
+    const response = await client.getEntries();
+
+    const data = response.items.find((entry) => entry.fields.slug == slug)
+
+    return data;
+}
