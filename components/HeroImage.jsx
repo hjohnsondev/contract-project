@@ -3,7 +3,6 @@ import Image from "next/image";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 function HeroImage ({heroData = null}) {
-    console.log(heroData)
     const actions = heroData?.actions;
     let contentAlignment;
     if (heroData?.sectionAlignment == "Left") {

@@ -2,7 +2,6 @@ import { mdiConsoleNetwork } from "@mdi/js";
 import Link from "next/link";
 
 function CardsSection ({cardData = null, style}) {
-    console.log(cardData);
 
     const cards = cardData?.cards;
 

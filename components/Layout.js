@@ -5,11 +5,7 @@ import SectionCard from "./SectionCard";
 
 export function Layout ({landingData}) {
 
-    console.log(landingData)
-
     const sections = landingData?.fields?.sections;
-
-    console.log(sections)
     
     const components = sections.map((section, index) => {
         if (section.sys.contentType.sys.id == "header") return <Header key={index} headerData={section.fields}/>
