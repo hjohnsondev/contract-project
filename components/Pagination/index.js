@@ -1,4 +1,4 @@
-import PaginationStyles from "../../styles/Pagination.module.css";
+const PaginationStyles = require("../../styles/Pagination.module.css");
 import Link from "next/link";
 import ChevronLeft from "./svg/ChevronLeft";
 import ChevronRight from "./svg/ChevronRight";
