@@ -18,9 +18,7 @@ export default function Pagination(props) {
         <li className={PaginationStyles.pagination__listItem}>
           {prevDisabled && (
             <span className={PaginationStyles.pagination__listItem__disabled}>
-              <span
-                className={PaginationStyles.pagination__chevronContainer__left}
-              >
+              <span className={PaginationStyles.pagination__chevronContainer__left}>
                 <ChevronLeft />
               </span>
               <span>Previous page</span>
