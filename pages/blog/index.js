@@ -1,5 +1,4 @@
 import { Config } from "../../utils/Config";
-
 import PageMeta from "../../components/PageMeta";
 import MainLayout from "../../components/MainLayout";
 import Header from "../../components/Header";

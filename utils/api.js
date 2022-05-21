@@ -256,6 +256,11 @@ export async function getPaginatedPostSummaries(page) {
                     slug
                     excerpt
                     date
+                    categoryCollection {
+                        items {
+                            categoryName
+                        }
+                    }
                     thumbnail {
                         title
                         description
@@ -275,6 +280,23 @@ export async function getPaginatedPostSummaries(page) {
       : { total: 0, items: [] };
 
     return paginatedPostSummaries;
+}
+
+export async function getTotalPostsNumber() {
+  const query = `
+    {
+      blogCollection {
+        total
+      }
+    }
+  `;
+
+  const response = await callContentful(query);
+  const totalPosts = response.data.blogCollection.total
+    ? response.data.blogCollection.total
+    : 0;
+
+  return totalPosts;
 }
 
 const defaultOptions = {

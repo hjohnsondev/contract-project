@@ -1,24 +1,6 @@
-import { GetStaticProps, NextPage } from 'next'
-import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event'
 import Head from 'next/head'
-import Image from 'next/image'
-
-import Header from '../components/Header';
-import HeroImage from '../components/HeroImage';
-import CardsSection from '../components/CardsSection';
 import { Layout } from '../components/Layout';
-
-import Icon from '@mdi/react'
-import styles from '../styles/Home.module.css'
-import { getHomeLandingPageData, getAllCardData, getAllHeaderData, getAllTestimonialData, getCardSectionData, getHeroImageData } from '../utils/api'
-import SectionCard from '../components/SectionCard';
-import TestimonialSection from '../components/TestimonialSection';
-
-  //<HeroImage heroImageCollection={props.heroImageData}/>
-  //<CardsSection cardData={props.cardData} style={"icon"}/>
-  //<CardsSection cardData={props.cardData} style={"image"}/>
-  //<SectionCard sectionData={props.sectionData} />
-  //<TestimonialSection testimonialData={props.testimonialData}/>
+import { getHomeLandingPageData } from '../utils/api'
 
 const Home = (props = null) => {
 
