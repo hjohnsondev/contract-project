@@ -10,7 +10,7 @@ export default function CategoriesMenu ({categories}) {
                 <h5 className="text-2xl mb-3"><strong>Categories</strong></h5>
                 {categories.map((category) => {
                     return (
-                        <div key={category}>
+                        <div key={`${category}`}>
                             <Link href={`/blog/category/${category}`}>
                                 <a className="group flex items-center">
                                     <div className="transition ease-in-out duration-700 ml-0 text-gray-400 group-hover:text-sky-500">{navArrow}</div>
