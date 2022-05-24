@@ -3,6 +3,7 @@ import PageMeta from "../../../components/PageMeta";
 import BlogList from "../../../components/BlogList";
 import MainLayout from "../../../components/MainLayout";
 import { getTotalPostsNumber, getPaginatedPostSummaries, getPageContentBySlug, getAllCategories } from "../../../utils/api";
+import Banner from "../../../components/Banner";
 
 import Header from "../../../components/Header";
 
@@ -17,6 +18,7 @@ export default function BlogIndexPage(props) {
     } = props;
 
     const headerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Header");
+    const bannerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Blog Banner");
 
     const pageTitle = pageContent ? pageContent.title : "Blog";
     const pageDescription = pageContent
@@ -33,6 +35,8 @@ export default function BlogIndexPage(props) {
         {pageContent.header !== null && (
             <Header headerData={headerData} blogHeader={true}/>
         )}
+
+        {bannerData && <Banner bannerData={bannerData}/>}
 
         <BlogList
             blogs={blogSummaries}

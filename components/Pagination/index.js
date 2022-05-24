@@ -8,6 +8,7 @@ export default function Pagination(props) {
   const { totalPages, currentPage, prevDisabled, nextDisabled } = props;
   const route = useRouter();
 
+  
   const prevPageUrl =
     currentPage === "2"
       ? "/blog"

@@ -2,6 +2,7 @@ import { Config } from "../../utils/Config";
 import PageMeta from "../../components/PageMeta";
 import MainLayout from "../../components/MainLayout";
 import Header from "../../components/Header";
+import Banner from "../../components/Banner";
 import BlogList from "../../components/BlogList";
 
 import { getPaginatedPostSummaries, getPageContentBySlug, getAllCategories } from "../../utils/api";
@@ -17,6 +18,7 @@ export default function BlogPage (props) {
     } = props;
 
     const headerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Header");
+    const bannerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Blog Banner");
 
     const pageTitle = pageContent ? pageContent.title : "Blog";
     const pageDescription = pageContent
@@ -33,6 +35,8 @@ export default function BlogPage (props) {
             {pageContent.header !== null && (
                 <Header headerData={headerData} blogHeader={true}/>
             )}
+
+            {bannerData && <Banner bannerData={bannerData}/>}
 
             <BlogList
                 blogs={blogSummaries}
@@ -53,6 +57,8 @@ export async function getStaticProps({ preview = false }) {
       },
     );
     const allCategories = await getAllCategories();
+
+    console.log(blogSummaries);
 
     const totalPages = Math.ceil(
       blogSummaries.total / Config.pagination.pageSize,

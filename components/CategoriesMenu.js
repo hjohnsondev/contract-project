@@ -12,7 +12,7 @@ export default function CategoriesMenu ({categories}) {
                     return (
                         <div key={`${category}`}>
                             <Link href={`/blog/category/${category}`}>
-                                <a className="group flex items-center">
+                                <a className="group flex items-center my-2">
                                     <div className="transition ease-in-out duration-700 ml-0 text-gray-400 group-hover:text-sky-500">{navArrow}</div>
                                     <p className="transition ease-in-out duration-700 m-2 text-gray-400 group-hover:text-sky-500"><strong>{category}</strong></p>
                                 </a>

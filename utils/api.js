@@ -169,6 +169,17 @@ export async function getPageContentBySlug(slug, options = defaultOptions) {
             }
             sectionsCollection {
               items {
+                ... on Banner {
+                  internalName
+                  headline
+                  backgroundImage {
+                    title
+                    description
+                    url
+                    width
+                    height
+                  }
+                }
                 ... on Footer {
                   internalName
                 }
@@ -336,21 +347,16 @@ export async function getTotalPostsNumberForCategory(category) {
 export async function getAllCategories () {
   const query = `
     {
-      allCategoriesCollection {
+      blogCategoryCollection {
         items {
-          internalName
-          categoriesCollection {
-            items {
-              categoryName
-            }
-          }
+          categoryName
         }
       }
     }
   `
   const response = await callContentful(query);
 
-  const allCategories = response.data.allCategoriesCollection.items[0].categoriesCollection.items.map((category) => category.categoryName);
+  const allCategories = response.data.blogCategoryCollection.items.map((category) => category.categoryName);
 
   return allCategories;
 }
@@ -358,45 +364,174 @@ export async function getAllCategories () {
 export async function getBlogsByCategory (page, category) {
 
   const skipMultiplier = page === 1 ? 0 : page - 1;
-  const skip = skipMultiplier > 0 ? Config.pagination.pageSize * skipMultiplier : 0;
+  const skip =
+    skipMultiplier > 0 ? Config.pagination.pageSize * skipMultiplier : 0;
+
+  const variables = { limit: Config.pagination.pageSize, skip, categoryName: category };
 
   const query = `
+    query GetBlogsByCategory($limit: Int!, $skip: Int!, $categoryName: String!) {
+      blogCategoryCollection(where: {categoryName: $categoryName}) {
+        items {
+          categoryName
+          linkedFrom {
+            entryCollection(limit: $limit, skip: $skip) {
+              total
+              items {
+                ... on Blog {
+                  title
+                  slug
+                  excerpt
+                  content {
+                    json
+                  }
+                  date
+                  categoryCollection(limit: 4) {
+                    items {
+                      categoryName
+                    }
+                  }
+                  thumbnail {
+                    title
+                    description
+                    contentType
+                    fileName
+                    size
+                    url
+                    width
+                    height
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+  }`;
+
+  const response = await callContentful(query, variables);
+
+  const paginatedCategorySummaries = response.data.blogCategoryCollection
+    ? response.data.blogCategoryCollection
+    : { total: 0, items: [] };
+
+  return paginatedCategorySummaries;
+}
+
+export async function getAllBlogPosts () {
+  const query = `
     {
-      blogCollection(order: date_DESC) {
+      blogCollection {
         total
         items {
           title
           slug
-          excerpt
           date
           categoryCollection {
             items {
               categoryName
             }
           }
+          thumbnail {
+            title
+            description
+            contentType
+            url
+            width
+            height
+          }
+          content {
+            json
+          }
         }
       }
-    }`;
-
-    const response = await callContentful(query);
-
-    const allBlogs = response.data.blogCollection.items.filter((blog) => {
-      const doesContainCategory = blog.categoryCollection.items.some((item) => item.categoryName === category);
-      if (doesContainCategory) return blog;
-    });
-
-    const dataForCategory = [];
-    for (let index = 0; index < allBlogs.length; index++) {
-      if (dataForCategory.length < Config.pagination.pageSize && index > skip - 1) {
-        dataForCategory.push(allBlogs[index]);
-      }
     }
+  `
 
-    const paginatedDataForCategory = dataForCategory
-      ? dataForCategory
-      : { total: 0, items: [] };
+  const response = await callContentful(query);
 
-    return {total: paginatedDataForCategory.length, paginatedDataForCategory: [...paginatedDataForCategory]};
+  const paginatedPostSummaries = response.data.blogCollection
+    ? response.data.blogCollection
+    : { total: 0, items: [] };
+
+  return paginatedPostSummaries;
+}
+
+export async function getBlogBySlug(slug) {
+  const variables = { slug };
+  const query = `query GetPostBySlug($slug: String!) {
+    blogCollection(limit: 1, where: {slug: $slug}) {
+      items {
+        title
+        slug
+        content {
+          json
+        }
+        date
+        categoryCollection {
+          items {
+            categoryName
+          }
+        }
+        thumbnail {
+          title
+          description
+          contentType
+          fileName
+          size
+          url
+          width
+          height
+        }
+      } 
+    }
+  }`;
+
+  const response = await callContentful(query, variables);
+  const blog = response.data.blogCollection.items
+    ? response.data.blogCollection.items
+    : [];
+
+  return blog.pop();
+}
+
+export async function getRelatedBlogPosts(category) {
+  const variables = { limit: 4, categoryName: category };
+
+  const query = `
+    query GetBlogsByCategory($limit: Int!, $categoryName: String!) {
+      blogCategoryCollection(where: {categoryName: $categoryName}) {
+        items {
+          categoryName
+          linkedFrom {
+            entryCollection(limit: $limit) {
+              total
+              items {
+                ... on Blog {
+                  title
+                  slug
+                  date
+                  thumbnail {
+                    title
+                    description
+                    url
+                    width
+                    height
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+  }`;
+  const response = await callContentful(query, variables);
+
+  const relatedBlogs = response.data.blogCategoryCollection.items[0].linkedFrom.entryCollection.items
+    ? response.data.blogCategoryCollection.items[0].linkedFrom.entryCollection.items
+    : { total: 0, items: [] };
+
+  return relatedBlogs;
 }
 
 const defaultOptions = {

@@ -7,6 +7,7 @@ import PageMeta from "../../../../../components/PageMeta";
 import MainLayout from "../../../../../components/MainLayout";
 import Header from "../../../../../components/Header";
 import BlogList from "../../../../../components/BlogList";
+import Banner from "../../../../../components/Banner";
 
 export default function BlogPage (props) {
     const {
@@ -19,6 +20,7 @@ export default function BlogPage (props) {
     } = props;
 
     const headerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Header");
+    const bannerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Blog Banner");
 
     const pageTitle = pageContent ? pageContent.title : "Blog";
     const pageDescription = pageContent
@@ -35,6 +37,8 @@ export default function BlogPage (props) {
             {pageContent.header !== null && (
                 <Header headerData={headerData} blogHeader={true}/>
             )}
+
+            {bannerData && <Banner bannerData={bannerData}/>}
 
             <BlogList
                 blogs={blogSummaries}
@@ -69,10 +73,9 @@ export async function getStaticPaths() {
   
 export async function getStaticProps({ params, preview = false }) {
     const blogSummaries = await getBlogsByCategory(params.page, params.category);
-    const totalBlogsByCategory = await getTotalPostsNumberForCategory(params.category);
   
     const totalPages = Math.ceil(
-        totalBlogsByCategory / Config.pagination.pageSize,
+        blogSummaries.items[0].linkedFrom.entryCollection.total / Config.pagination.pageSize,
     );
 
     const pageContent = await getPageContentBySlug(
@@ -87,7 +90,7 @@ export async function getStaticProps({ params, preview = false }) {
     return {
         props: {
         preview,
-        blogSummaries: blogSummaries.paginatedDataForCategory,
+        blogSummaries: blogSummaries.items[0].linkedFrom.entryCollection.items,
         totalPages,
         currentPage: params.page,
         pageContent: pageContent || null,
