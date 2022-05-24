@@ -299,6 +299,106 @@ export async function getTotalPostsNumber() {
   return totalPosts;
 }
 
+export async function getTotalPostsNumberForCategory(category) {
+  const query = `
+    {
+      blogCollection(order: date_DESC) {
+        total
+        items {
+          title
+          slug
+          excerpt
+          date
+          categoryCollection {
+            items {
+              categoryName
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  let total = 0;
+
+  const response = await callContentful(query);
+  response.data.blogCollection.items.forEach((blog) => {
+    if (blog.categoryCollection.items) {
+      blog.categoryCollection.items.forEach((item) => {
+        if (item.categoryName == category) total++;
+      })
+    }
+  })
+
+  return total;
+}
+
+export async function getAllCategories () {
+  const query = `
+    {
+      allCategoriesCollection {
+        items {
+          internalName
+          categoriesCollection {
+            items {
+              categoryName
+            }
+          }
+        }
+      }
+    }
+  `
+  const response = await callContentful(query);
+
+  const allCategories = response.data.allCategoriesCollection.items[0].categoriesCollection.items.map((category) => category.categoryName);
+
+  return allCategories;
+}
+
+export async function getBlogsByCategory (page, category) {
+
+  const skipMultiplier = page === 1 ? 0 : page - 1;
+  const skip = skipMultiplier > 0 ? Config.pagination.pageSize * skipMultiplier : 0;
+
+  const query = `
+    {
+      blogCollection(order: date_DESC) {
+        total
+        items {
+          title
+          slug
+          excerpt
+          date
+          categoryCollection {
+            items {
+              categoryName
+            }
+          }
+        }
+      }
+    }`;
+
+    const response = await callContentful(query);
+
+    const allBlogs = response.data.blogCollection.items.filter((blog) => {
+      const doesContainCategory = blog.categoryCollection.items.some((item) => item.categoryName === category);
+      if (doesContainCategory) return blog;
+    });
+
+    const dataForCategory = [];
+    for (let index = 0; index < allBlogs.length; index++) {
+      if (dataForCategory.length < Config.pagination.pageSize && index > skip - 1) {
+        dataForCategory.push(allBlogs[index]);
+      }
+    }
+
+    const paginatedDataForCategory = dataForCategory
+      ? dataForCategory
+      : { total: 0, items: [] };
+
+    return {total: paginatedDataForCategory.length, paginatedDataForCategory: [...paginatedDataForCategory]};
+}
+
 const defaultOptions = {
     preview: false,
 };

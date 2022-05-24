@@ -1,11 +1,11 @@
 
-const SITE_URL = "https://vercel.com/hjohnsondev/contract-project/GfhRvUKCw2gp65w393gjjTyepHRq";
+const SITE_URL = "http://localhost:3000";
 
 export const Config = {
     site: {
       owner: "Xtivia Inc.",
       title: "Contract Project",
-      domain: "vercel.com/hjohnsondev/contract-project/GfhRvUKCw2gp65w393gjjTyepHRq",
+      domain: "http://localhost:3000",
       email: "example@example.com",
       feedDescription: "Example Feed for example.com",
     },

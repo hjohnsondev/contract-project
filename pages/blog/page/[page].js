@@ -2,7 +2,7 @@ import { Config } from "../../../utils/Config";
 import PageMeta from "../../../components/PageMeta";
 import BlogList from "../../../components/BlogList";
 import MainLayout from "../../../components/MainLayout";
-import { getTotalPostsNumber, getPaginatedPostSummaries, getPageContentBySlug } from "../../../utils/api";
+import { getTotalPostsNumber, getPaginatedPostSummaries, getPageContentBySlug, getAllCategories } from "../../../utils/api";
 
 import Header from "../../../components/Header";
 
@@ -13,6 +13,7 @@ export default function BlogIndexPage(props) {
         totalPages,
         pageContent,
         preview,
+        allCategories
     } = props;
 
     const headerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Header");
@@ -37,6 +38,7 @@ export default function BlogIndexPage(props) {
             blogs={blogSummaries}
             totalPages={totalPages}
             currentPage={currentPage}
+            allCategories={allCategories}
         />
     </MainLayout>
   );
@@ -75,6 +77,8 @@ export async function getStaticProps({ params, preview = false }) {
     },
   );
 
+  const allCategories = await getAllCategories();
+
   return {
     props: {
       preview,
@@ -82,6 +86,7 @@ export async function getStaticProps({ params, preview = false }) {
       totalPages,
       currentPage: params.page,
       pageContent: pageContent || null,
+      allCategories: allCategories
     },
   };
 }

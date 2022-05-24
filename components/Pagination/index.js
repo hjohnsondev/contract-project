@@ -2,15 +2,17 @@ import PaginationStyles from "./Pagination.module.css";
 import Link from "next/link";
 import ChevronLeft from "./svg/ChevronLeft";
 import ChevronRight from "./svg/ChevronRight";
+import { useRouter } from "next/router";
 
 export default function Pagination(props) {
   const { totalPages, currentPage, prevDisabled, nextDisabled } = props;
+  const route = useRouter();
 
   const prevPageUrl =
     currentPage === "2"
       ? "/blog"
-      : `/blog/page/${parseInt(currentPage, 10) - 1}`;
-  const nextPageUrl = `/blog/page/${parseInt(currentPage, 10) + 1}`;
+      : `${route.asPath}/page/${parseInt(currentPage, 10) - 1}`;
+  const nextPageUrl = `${route.asPath}/page/${parseInt(currentPage, 10) + 1}`;
 
   return (
     <div className={PaginationStyles.pagination}>

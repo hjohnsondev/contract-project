@@ -1,10 +1,10 @@
-import { Config } from "../../utils/Config";
-import PageMeta from "../../components/PageMeta";
-import MainLayout from "../../components/MainLayout";
-import Header from "../../components/Header";
-import BlogList from "../../components/BlogList";
+import { getAllCategories, getBlogsByCategory, getPageContentBySlug, getTotalPostsNumberForCategory } from "../../../../utils/api";
 
-import { getPaginatedPostSummaries, getPageContentBySlug, getAllCategories } from "../../utils/api";
+import { Config } from "../../../../utils/Config";
+import PageMeta from "../../../../components/PageMeta";
+import MainLayout from "../../../../components/MainLayout";
+import Header from "../../../../components/Header";
+import BlogList from "../../../../components/BlogList";
 
 export default function BlogPage (props) {
     const {
@@ -44,8 +44,24 @@ export default function BlogPage (props) {
     )    
 }
 
-export async function getStaticProps({ preview = false }) {
-    const blogSummaries = await getPaginatedPostSummaries(1);
+export async function getStaticPaths() {
+    const allCategories = await getAllCategories();
+  
+    return {
+        paths: allCategories.map((category) => {
+            return { params: { category: category }}
+        }),
+        fallback: false
+    }
+}
+  
+export async function getStaticProps({ params, preview = false }) {
+    const blogSummaries = await getBlogsByCategory(1, params.category);
+    const totalBlogsByCategory = await getTotalPostsNumberForCategory(params.category);
+  
+    const totalPages = Math.ceil(
+        totalBlogsByCategory / Config.pagination.pageSize,
+    );
     const pageContent = await getPageContentBySlug(
       Config.pageMeta.blogIndex.slug,
       {
@@ -53,19 +69,15 @@ export async function getStaticProps({ preview = false }) {
       },
     );
     const allCategories = await getAllCategories();
-
-    const totalPages = Math.ceil(
-      blogSummaries.total / Config.pagination.pageSize,
-    );
   
     return {
       props: {
         preview,
-        blogSummaries: blogSummaries.items,
+        blogSummaries: blogSummaries.paginatedDataForCategory,
         totalPages,
-        currentPage: "1",
+        currentPage: 1,
         pageContent: pageContent || null,
         allCategories: allCategories
       },
     };
-  }
+}
