@@ -8,12 +8,12 @@ function CardsSection ({cardData = null, style}) {
     if (style == "icon") {
         return (
             <div className="w-full bg-white top-0 left-0 h-full">
-                <div className="md:container md:mx-auto px-48 h-full">
+                <div className="md:container md:mx-auto md:px-48 h-full">
                     {cardData?.title && <div className="flex mt-16 flex-col items-center justify-center space-y-6">
                         <h2 className=" text-4xl"><strong>{cardData?.title}</strong></h2>
                         <hr className="border-2 border-sky-500 w-[5%]"/>
                     </div>}
-                    <div className={`flex p-5 ${cardData?.cardDisplayStyle == "Vertical" ? "flex-col justify-center space-y-16" : ""} ${cardData?.cardsInARow < cardData?.cards.length && cardData?.cardDisplayStyle == "Horizontal" ? "flex-wrap justify-around" : ""} ${cardData?.cardsInARow >= cardData?.cards.length ? "space-x-10" : ""}`}>
+                    <div className={`flex p-5 flex-col ${cardData?.cardDisplayStyle == "Vertical" ? "md:flex-col md:justify-center md:space-y-16" : ""} ${cardData?.cardsInARow < cardData?.cards.length && cardData?.cardDisplayStyle == "Horizontal" ? "md:flex-wrap md:justify-around md:flex-row" : ""} ${cardData?.cardsInARow >= cardData?.cards.length ? "md:space-x-10 md:justify-around md:flex-row" : ""}`}>
                         <>
                             {cards.map((card, index) => {
                                 return (
@@ -32,15 +32,15 @@ function CardsSection ({cardData = null, style}) {
     }
     return (
         <div className="w-full bg-white top-0 left-0 relative h-full">
-            <div className="md:container md:mx-auto px-48 h-full">
+            <div className="md:container md:mx-auto md:px-48 h-full">
                 {cardData?.title && <div className="flex flex-col items-center justify-center space-y-6">
                     <h2 className=" text-4xl"><strong>{cardData?.title}</strong></h2>
                     <hr className="border-2 border-sky-500 w-[5%]"/>
                 </div>}
-                <div className={`py-10 flex items-center h-full ${cardData?.cardDisplayStyle == "Vertical" ? "flex-col justify-center space-y-16" : ""} ${cardData?.cardsInARow < cardData?.cards?.length && cardData?.cardDisplayStyle == "Horizontal" ? "flex-wrap justify-around" : ""} ${cardData?.cardsInARow >= cardData?.cards?.length ? "space-x-10" : ""}`}>
+                <div className={`py-10 flex flex-col items-center h-full ${cardData?.cardDisplayStyle == "Vertical" ? "md:flex-col md:justify-center md:space-y-16" : ""} ${cardData?.cardsInARow < cardData?.cards?.length && cardData?.cardDisplayStyle == "Horizontal" ? "md:flex-wrap md:justify-around md:flex-row" : ""} ${cardData?.cardsInARow >= cardData?.cards?.length ? "md:space-x-10 md:justify-around md:flex-row" : ""}`}>
                     {cardData?.cards?.map((card, index) => {
                         return (
-                            <div key={index} className={`flex basis-1/${cardData?.cardsInARow} space-y-6 max-w-[32rem] flex-col m-0`}>
+                            <div key={index} className={`flex mx-5 md:mx-0 basis-1/${cardData?.cardsInARow} space-y-6 max-w-[32rem] flex-col m-0`}>
                                 <img className="w-full rounded" src={`${card?.fields?.image?.fields?.image?.fields?.file?.url}`} alt={`${card?.fields?.image?.fields?.altText}`}/>
                                 <h3 className="text-2xl"><strong>{card?.fields?.title}</strong></h3>
                                 <hr className="border-2 border-sky-500 max-w-[15%]"/> 
