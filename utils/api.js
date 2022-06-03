@@ -158,6 +158,22 @@ export async function getLandingBySlug(slug) {
     return data;
 }
 
+export async function getPreviewLandingBySlug(slug) {
+  const contentful = require('contentful')
+
+  const client = contentful.createClient({
+      space: process.env.CONTENTFUL_SPACE_ID,
+      accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN,
+      host: 'preview.contentful.com',
+  })
+
+  const response = await client.getEntries();
+
+  const data = response.items.find((entry) => entry.fields.slug == slug)
+
+  return data;
+}
+
 export async function getPageContentBySlug(slug, options = defaultOptions) {
     const variables = { slug, preview: options.preview };
     const query = `
