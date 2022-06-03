@@ -3,11 +3,9 @@ import { getPreviewLandingBySlug } from "../../utils/api"
 export default async function handler(req, res) {
   const { secret, slug } = req.query
 
-  /* 
   if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !slug) {
     return res.status(401).json({ message: 'Invalid token' })
   }
-  */
 
   // Fetch the headless CMS to check if the provided `slug` exists
   const page = await getPreviewLandingBySlug(slug)
