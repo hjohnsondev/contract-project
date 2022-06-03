@@ -4,8 +4,6 @@ import { getHomeLandingPageData } from '../utils/api'
 
 const Home = (props = null) => {
 
-  console.log(props.landingData)
-
   return (
     <div>
       <Head>

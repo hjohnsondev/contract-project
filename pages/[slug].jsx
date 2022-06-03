@@ -1,9 +1,8 @@
-import { getAllLandingTypes, getLandingBySlug } from "../utils/api"
+import { getAllLandingTypes, getLandingBySlug, getPreviewLandingBySlug } from "../utils/api"
 import Head from "next/head";
 import { Layout } from "../components/Layout";
 
 export default function page (props) {
-    console.log(props)
   return (
     <div>
       <Head>
@@ -14,7 +13,7 @@ export default function page (props) {
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css"></link>
       </Head>
       <main className='relative'>
-        <Layout landingData={props.landingData}/>
+        <Layout landingData={props.landingData} preview={props.preview}/>
       </main>
     </div>
   )
@@ -32,13 +31,16 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps(context) {
 
-    const landingData = await getLandingBySlug(params.slug);
+  const client = context.preview ? getPreviewLandingBySlug(context.params.slug) : getLandingBySlug(context.params.slug);
 
-    return {
-        props: {
-          landingData
-        }
-    }
+  const landingData = await client;
+
+  return {
+      props: {
+        preview: context.preview || false,
+        landingData
+      }
+  }
 }

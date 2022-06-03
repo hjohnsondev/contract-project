@@ -1,9 +1,10 @@
 import CardsSection from "./CardsSection";
 import Header from "./Header";
 import HeroImage from "./HeroImage";
+import PreviewBanner from "./PreviewBanner";
 import SectionCard from "./SectionCard";
 
-export function Layout ({landingData}) {
+export function Layout ({landingData, preview}) {
 
     const sections = landingData?.fields?.sections;
     
@@ -15,6 +16,9 @@ export function Layout ({landingData}) {
     })
 
     return (
-        <div>{components}</div>
+        <div>
+            {preview && <PreviewBanner/>}
+            {components}
+        </div>
     )
 }

@@ -17,7 +17,7 @@ export default function BlogIndexPage(props) {
         allCategories
     } = props;
 
-    const headerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Header");
+    const headerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Head");
     const bannerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Blog Banner");
 
     const pageTitle = pageContent ? pageContent.title : "Blog";

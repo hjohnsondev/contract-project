@@ -1,6 +1,5 @@
 import Link from "next/link";
 function SectionCard ({section = null}) {
-    console.log(section);
     return (
         <div className="relative flex items-center justify-center overflow-visible w-full h-[46rem]">
             <div className="md:absolute w-full h-full top-0 left-0">
