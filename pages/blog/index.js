@@ -17,7 +17,7 @@ export default function BlogPage (props) {
         allCategories
     } = props;
 
-    const headerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Header");
+    const headerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Head");
     const bannerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Blog Banner");
 
     const pageTitle = pageContent ? pageContent.title : "Blog";
@@ -57,8 +57,6 @@ export async function getStaticProps({ preview = false }) {
       },
     );
     const allCategories = await getAllCategories();
-
-    console.log(blogSummaries);
 
     const totalPages = Math.ceil(
       blogSummaries.total / Config.pagination.pageSize,
