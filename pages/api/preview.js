@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !slug) {
     return res.status(401).json({ message: 'Invalid token', secret: secret, toMatch: process.env.CONTENTFUL_PREVIEW_SECRET, slug: slug });
   }
-  */
+  
 
   // Fetch the headless CMS to check if the provided `slug` exists
   const page = await getPreviewLandingBySlug(slug)
@@ -16,6 +16,7 @@ export default async function handler(req, res) {
   if (!page.fields.sections.length) {
     return res.status(401).json({ message: 'Invalid slug' })
   }
+  */
 
   // Enable Preview Mode by setting the cookies
   res.setPreviewData({})
