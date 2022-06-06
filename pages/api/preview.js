@@ -4,9 +4,10 @@ export default async function handler(req, res) {
   const { secret, slug } = req.query
 
   const isMatch = secret !== process.env.CONTENTFUL_PREVIEW_SECRET ? false : true;
-
+  const variableSecret = process.env.CONTENTFUL_PREVIEW_SECRET;
+  
   if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !slug) {
-    return res.status(401).json({ message: 'Invalid token', secret: secret, isMatch, slug: slug });
+    return res.status(401).json({ message: 'Invalid token', secret: secret + " != " + variableSecret, isMatch, slug: slug });
   }
   
   // Fetch the headless CMS to check if the provided `slug` exists
