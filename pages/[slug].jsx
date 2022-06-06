@@ -26,20 +26,20 @@ export async function getStaticPaths() {
     return {
         paths: landings.map((landing) => {
             return { params: { slug: landing.fields.slug }}
-        }),
+        }) ?? [],
         fallback: true
     }
 }
 
-export async function getStaticProps({params, preview = false}) {
+export async function getStaticProps(context) {
 
-  const client = context.preview ? getPreviewLandingBySlug(params.slug) : getLandingBySlug(params.slug);
+  const client = context.preview ? getPreviewLandingBySlug(context.params.slug) : getLandingBySlug(context.params.slug);
 
   const landingData = await client;
 
   return {
       props: {
-        preview,
+        preview: context.preview || false,
         landingData
       }
   }
