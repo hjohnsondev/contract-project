@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 
-  const client = context.preview ? getPreviewLandingBySlug(context.params.slug) : getLandingBySlug(context.params.slug);
+  const client = context.preview ? getPreviewLandingBySlug(context.params.slug, context.previewData.environment) : getLandingBySlug(context.params.slug);
 
   const landingData = await client;
 

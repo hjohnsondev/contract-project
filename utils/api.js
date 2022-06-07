@@ -158,11 +158,12 @@ export async function getLandingBySlug(slug) {
     return data;
 }
 
-export async function getPreviewLandingBySlug(slug) {
+export async function getPreviewLandingBySlug(slug, environment) {
   const contentful = require('contentful')
 
   const client = contentful.createClient({
       space: process.env.CONTENTFUL_SPACE_ID,
+      environment: environment,
       accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
       host: 'preview.contentful.com',
   })
