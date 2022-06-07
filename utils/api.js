@@ -505,6 +505,7 @@ export async function getBlogBySlug(slug, options = defaultOptions) {
   }`;
 
   const response = await callContentful(query, variables, options);
+
   const blog = response.data.blogCollection.items
     ? response.data.blogCollection.items
     : [];

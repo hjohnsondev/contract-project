@@ -78,6 +78,7 @@ export async function getStaticProps({ params, preview = false }) {
     Config.pageMeta.blogIndex.slug,
     {
       preview: preview,
+      environment: "master"
     },
   );
 

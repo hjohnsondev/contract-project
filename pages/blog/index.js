@@ -54,6 +54,7 @@ export async function getStaticProps({ preview = false }) {
       Config.pageMeta.blogIndex.slug,
       {
         preview: preview,
+        environment: "master"
       },
     );
     const allCategories = await getAllCategories();

@@ -59,7 +59,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params, preview = false, previewData = { environment: "master" }}) {
 
-    const blogContent = await getBlogBySlug(params.blog, { preview: preview, environment: previewData });
+    const blogContent = await getBlogBySlug(params.slug, { preview: preview, environment: previewData.environment });
     const pageContent = await getPageContentBySlug(
       Config.pageMeta.blogIndex.slug,
       {
