@@ -63,7 +63,7 @@ export async function getStaticProps(context) {
     const pageContent = await getPageContentBySlug(
       Config.pageMeta.blogIndex.slug,
       {
-        preview: context.preview,
+        preview: context.preview || false,
         environment: context.previewData.environment || "master"
       },
     );
