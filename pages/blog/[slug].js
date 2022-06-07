@@ -57,8 +57,9 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({ params, preview = false }) {
-    const blogContent = await getBlogBySlug(params.slug);
+export async function getStaticProps({ params, preview = false, previewData = { environment: "master" }}) {
+
+    const blogContent = await getBlogBySlug(params.blog, { preview: preview, environment: previewData.environment  });
     const pageContent = await getPageContentBySlug(
       Config.pageMeta.blogIndex.slug,
       {
@@ -67,14 +68,15 @@ export async function getStaticProps({ params, preview = false }) {
     );
     const allCategories = await getAllCategories();
     const relatedPosts = await getRelatedBlogPosts(blogContent.categoryCollection.items[0].categoryName);
-  
+
+
     return {
       props: {
         preview,
         blogContent: blogContent,
         pageContent: pageContent || null,
         allCategories: allCategories,
-        relatedPosts: relatedPosts
+        relatedPosts: relatedPosts || null
       },
     };
 }

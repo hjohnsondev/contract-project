@@ -474,10 +474,10 @@ export async function getAllBlogPosts () {
   return paginatedPostSummaries;
 }
 
-export async function getBlogBySlug(slug) {
-  const variables = { slug };
-  const query = `query GetPostBySlug($slug: String!) {
-    blogCollection(limit: 1, where: {slug: $slug}) {
+export async function getBlogBySlug(slug, options = defaultOptions) {
+  const variables = { slug, preview: options.preview };
+  const query = `query GetPostBySlug($slug: String!, $preview: Boolean!) {
+    blogCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
       items {
         title
         slug
@@ -504,7 +504,7 @@ export async function getBlogBySlug(slug) {
     }
   }`;
 
-  const response = await callContentful(query, variables);
+  const response = await callContentful(query, variables, options);
   const blog = response.data.blogCollection.items
     ? response.data.blogCollection.items
     : [];
@@ -553,13 +553,17 @@ export async function getRelatedBlogPosts(category) {
 
 const defaultOptions = {
     preview: false,
+    environment: "master"
 };
 
 export async function callContentful(query, variables = {}, options = defaultOptions) {
-    const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
+    const fetchUrl = 
+      options.environment == "master" ? 
+      `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}` :
+      `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${options.environment}`;
 
     const accessToken = options.preview
-      ? process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN
+      ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
       : process.env.CONTENTFUL_ACCESS_TOKEN;
 
     const fetchOptions = {
