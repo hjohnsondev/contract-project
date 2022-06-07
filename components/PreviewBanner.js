@@ -22,7 +22,7 @@ function PreviewBanner() {
       <span>PREVIEW MODE ENABLED</span>
       <Link
         prefetch={false}
-        href={`/api/exit-preview?route=${route.asPath}`}
+        href={`/api/exit-preview?url=${route.asPath}`}
       >
         <a
           style={{
