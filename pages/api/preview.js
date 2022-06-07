@@ -6,13 +6,11 @@ export default async function handler(req, res) {
   const isMatch = secret !== process.env.CONTENTFUL_PREVIEW_SECRET ? false : true;
   
   if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !slug) {
-    return res.status(401).json({ message: 'Invalid token', secret: secret, isMatch, slug: slug });
+    return res.status(401).json({ message: 'Invalid token', yourKey: secret, isMatch, slug: slug });
   }
   
   // Fetch the headless CMS to check if the provided `slug` exists
   const page = await getPreviewLandingBySlug(slug)
-
-  console.log(page)
 
   // If the slug doesn't exist prevent preview mode from being enabled
   if (!page.fields.sections.length) {
