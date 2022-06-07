@@ -1,5 +1,5 @@
 export default function handler(_, res) {
-    // Exit the current user from "Preview Mode". This function accepts no args.
+  // Exit the current user from "Preview Mode". This function accepts no args.
   res.clearPreviewData()
 
   // Redirect the user back to the index page.
