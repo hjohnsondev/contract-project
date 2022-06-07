@@ -57,14 +57,14 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({ params, preview = false, previewData = { environment: "master" }}) {
+export async function getStaticProps(context) {
 
-    const blogContent = await getBlogBySlug(params.blog, { preview: preview, environment: previewData.environment  });
+    const blogContent = await getBlogBySlug(context.params.blog, { preview: context.preview || false, environment: context.previewData.environment || "master" });
     const pageContent = await getPageContentBySlug(
       Config.pageMeta.blogIndex.slug,
       {
-        preview: preview,
-        environment: previewData.environment
+        preview: context.preview,
+        environment: context.previewData.environment || "master"
       },
     );
     const allCategories = await getAllCategories();
