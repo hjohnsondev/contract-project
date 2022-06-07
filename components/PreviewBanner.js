@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import { useRouter } from "next/router";
 
 function PreviewBanner() {
+  const route = useRouter();
   return (
     <div
       style={{
@@ -20,7 +22,7 @@ function PreviewBanner() {
       <span>PREVIEW MODE ENABLED</span>
       <Link
         prefetch={false}
-        href="/api/exit-preview"
+        href={`/api/exit-preview?route=${route.asPath}`}
       >
         <a
           style={{
