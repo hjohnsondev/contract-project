@@ -25,7 +25,7 @@ function HeroImage ({heroData = null}) {
     
     return (
         <div className="w-full relative md:z-10">
-            <div className={`w-full h-full bg-black top-0 left-0 absolute opacity-70 md:${heroData?.darkenImage ? 'opacity-70' : 'opacity-0'}`}></div>
+            <div className={`w-full h-full bg-black top-0 left-0 absolute opacity-70 ${heroData?.darkenImage ? 'md:opacity-70' : 'md:opacity-0'}`}></div>
             <div className="w-full h-full absolute top-0 left-0">
                 <div className="md:container md:mx-auto md:px-48 h-full">
                     <div className={`flex ${contentAlignment} justify-center items-center h-full`}>
