@@ -11,7 +11,7 @@ function Header ({headerData = null, blogHeader = false}) {
     const headerCards = headerData?.logoCards;
     const navigationItems = headerData?.navigationMenu?.fields?.navigationItems;
 
-    const navArrow = <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" sstrokeLinejoin="round" strokeWidth="6" d="M19 9l-7 7-7-7"></path></svg>
+    const navArrow = <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="6" d="M19 9l-7 7-7-7"></path></svg>
 
     const router = useRouter();
     const [showSidebar, setShowSidebar] = useState(false);

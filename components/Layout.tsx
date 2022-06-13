@@ -3,6 +3,8 @@ import Header from "./Header";
 import HeroImage from "./HeroImage";
 import PreviewBanner from "./PreviewBanner.jsx";
 import SectionCard from "./SectionCard";
+import MainLayout from "./MainLayout";
+import Meta from "./Meta";
 
 export function Layout ({landingData, preview}) {
 
@@ -16,9 +18,10 @@ export function Layout ({landingData, preview}) {
     })
 
     return (
-        <div>
+        <MainLayout>
+            <Meta />
             {preview && <PreviewBanner/>}
             {components}
-        </div>
+        </MainLayout>
     )
 }

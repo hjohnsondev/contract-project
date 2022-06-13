@@ -1,7 +1,7 @@
 import { Config } from "../../../utils/Config";
 import PageMeta from "../../../components/PageMeta";
 import BlogList from "../../../components/BlogList";
-import MainLayout from "../../../components/MainLayout.jsx";
+import MainLayout from "../../../components/MainLayout";
 import { getTotalPostsNumber, getPaginatedPostSummaries, getPageContentBySlug, getAllCategories } from "../../../utils/api";
 import Banner from "../../../components/Banner";
 

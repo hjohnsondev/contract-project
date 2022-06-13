@@ -2,7 +2,7 @@ import { getAllCategories, getBlogsByCategory, getPageContentBySlug, getTotalPos
 
 import { Config } from "../../../../utils/Config";
 import PageMeta from "../../../../components/PageMeta";
-import MainLayout from "../../../../components/MainLayout.jsx";
+import MainLayout from "../../../../components/MainLayout";
 import Header from "../../../../components/Header";
 import BlogList from "../../../../components/BlogList";
 import { useRouter } from "next/router";
