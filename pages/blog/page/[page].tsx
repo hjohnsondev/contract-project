@@ -1,13 +1,15 @@
 import { Config } from "../../../utils/Config";
 import PageMeta from "../../../components/PageMeta";
 import BlogList from "../../../components/BlogList";
-import MainLayout from "../../../components/MainLayout";
+import MainLayout from "../../../components/MainLayout.jsx";
 import { getTotalPostsNumber, getPaginatedPostSummaries, getPageContentBySlug, getAllCategories } from "../../../utils/api";
 import Banner from "../../../components/Banner";
 
 import Header from "../../../components/Header";
+import { blogLanding } from "../../../types/blogLanding";
+import { GetStaticPaths } from "next";
 
-export default function BlogIndexPage(props) {
+export default function BlogIndexPage(props: blogLanding) {
     const {
         blogSummaries,
         currentPage,
@@ -48,7 +50,7 @@ export default function BlogIndexPage(props) {
   );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const totalPosts = await getTotalPostsNumber();
   const totalPages = Math.ceil(totalPosts / Config.pagination.pageSize);
 
@@ -68,7 +70,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export const getStaticProps = async ({ params, preview = false }) => {
   const blogSummaries = await getPaginatedPostSummaries( params.page );
 
   const totalPages = Math.ceil(

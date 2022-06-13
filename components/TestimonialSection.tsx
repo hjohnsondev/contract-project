@@ -1,4 +1,3 @@
-import Link from "next/link";
 import TestimonialCard from "./TestimonialCard";
 
 function TestimonialSection ({testimonialData = null}) {

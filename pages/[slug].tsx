@@ -1,8 +1,10 @@
 import { getAllLandingTypes, getLandingBySlug, getPreviewLandingBySlug } from "../utils/api"
 import Head from "next/head";
 import { Layout } from "../components/Layout";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { landing } from "../types/landing";
 
-export default function page (props) {
+export default function page (props: landing) {
   return (
     <div>
       <Head>
@@ -19,7 +21,7 @@ export default function page (props) {
   )
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
 
     const landings = await getAllLandingTypes();
     
@@ -31,9 +33,9 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps(context) {
+export const getStaticProps: GetStaticProps = async (context: any) => {
 
-  const client = context.preview ? getPreviewLandingBySlug(context.params.slug, context.previewData.environment) : getLandingBySlug(context.params.slug);
+  const client = context.preview ? getPreviewLandingBySlug(context.params.slug as string, context.previewData.environment) : getLandingBySlug(context.params.slug as string);
 
   const landingData = await client;
 

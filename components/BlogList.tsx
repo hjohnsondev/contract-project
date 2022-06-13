@@ -1,7 +1,5 @@
 import Pagination from "./Pagination";
 import CategoriesMenu from "./CategoriesMenu";
-import Link from "next/link";
-import { Config } from "../utils/Config";
 import BlogComponent from "./BlogComponent";
 
 export default function BlogList ({ blogs, totalPages, currentPage, allCategories }) {
