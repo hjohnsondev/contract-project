@@ -1,7 +1,7 @@
 import { Config } from "../../utils/Config";
 import { getAllBlogPosts, getBlogBySlug, getPageContentBySlug, getAllCategories, getRelatedBlogPosts } from "../../utils/api";
 
-import MainLayout from "../../components/MainLayout.jsx";
+import MainLayout from "../../components/MainLayout";
 import PageMeta from "../../components/PageMeta";
 import Header from "../../components/Header";
 import SlugPage from "../../components/SlugPage";
