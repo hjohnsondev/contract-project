@@ -1,8 +1,10 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head'
 import { Layout } from '../components/Layout';
 import { getHomeLandingPageData } from '../utils/api'
+import { landing, preview } from '../types/landing';
 
-const Home = (props = null) => {
+const Home = ({ landingData, preview = false }: landing) => {
 
   return (
     <div>
@@ -14,13 +16,13 @@ const Home = (props = null) => {
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" />
       </Head>
       <main className='relative w-full'>
-        <Layout landingData={props.landingData}/>
+        <Layout landingData={landingData} preview={preview}/>
       </main>
     </div>
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 
   const landingData = await getHomeLandingPageData();
 

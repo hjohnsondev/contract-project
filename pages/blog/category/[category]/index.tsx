@@ -1,15 +1,19 @@
+import { getAllCategories, getBlogsByCategory, getPageContentBySlug, getTotalPostsNumberForCategory } from "../../../../utils/api";
+
+import { Config } from "../../../../utils/Config";
+import PageMeta from "../../../../components/PageMeta";
+import MainLayout from "../../../../components/MainLayout.jsx";
+import Header from "../../../../components/Header";
+import BlogList from "../../../../components/BlogList";
 import { useRouter } from "next/router";
+import Banner from "../../../../components/Banner";
 
-import { getAllCategories, getBlogsByCategory, getPageContentBySlug, getTotalPostsNumberForCategory } from "../../../../../utils/api";
+import { GetStaticPaths, GetStaticProps } from "next";
 
-import { Config } from "../../../../../utils/Config";
-import PageMeta from "../../../../../components/PageMeta";
-import MainLayout from "../../../../../components/MainLayout";
-import Header from "../../../../../components/Header";
-import BlogList from "../../../../../components/BlogList";
-import Banner from "../../../../../components/Banner";
+import { blogLanding } from "../../../../types/blogLanding";
 
-export default function BlogPage (props) {
+export default function BlogPage (props: blogLanding) {
+
     const {
         blogSummaries,
         currentPage,
@@ -50,52 +54,40 @@ export default function BlogPage (props) {
     )    
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const allCategories = await getAllCategories();
-
-    const allPaths = []
-    for (let category of allCategories) {
-        const pages = await getTotalPostsNumberForCategory(category)
-        const totalPages = Math.ceil(pages / Config.pagination.pageSize);
-        for (let page = 2; page <= totalPages; page++) {
-            allPaths.push({ params: {
-                category: category.toString(),
-                page: page.toString()
-            }});
-        }
-    }
-
-    return {
-        paths: allPaths,
-        fallback: false,
-    };
-  }
   
-export async function getStaticProps({ params, preview = false }) {
-    const blogSummaries = await getBlogsByCategory(params.page, params.category);
+    return {
+        paths: allCategories.map((category) => {
+            return { params: { category: category }}
+        }),
+        fallback: false
+    }
+}
+  
+export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
+    const blogSummaries = await getBlogsByCategory(1, params.category as string);
   
     const totalPages = Math.ceil(
         blogSummaries.items[0].linkedFrom.entryCollection.total / Config.pagination.pageSize,
     );
-
     const pageContent = await getPageContentBySlug(
-        Config.pageMeta.blogIndex.slug,
-        {
+      Config.pageMeta.blogIndex.slug,
+      {
         preview: preview,
         environment: "master"
-        },
+      },
     );
-
     const allCategories = await getAllCategories();
-
+  
     return {
-        props: {
+      props: {
         preview,
         blogSummaries: blogSummaries.items[0].linkedFrom.entryCollection.items,
         totalPages,
-        currentPage: params.page,
+        currentPage: 1,
         pageContent: pageContent || null,
         allCategories: allCategories
-        },
+      },
     };
 }

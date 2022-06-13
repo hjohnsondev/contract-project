@@ -142,7 +142,7 @@ export async function getAllLandingTypes () {
     return data;
 }
 
-export async function getLandingBySlug(slug) {
+export async function getLandingBySlug(slug: string) {
     const contentful = require('contentful')
 
     const client = contentful.createClient({
@@ -158,7 +158,7 @@ export async function getLandingBySlug(slug) {
     return data;
 }
 
-export async function getPreviewLandingBySlug(slug, environment) {
+export async function getPreviewLandingBySlug(slug: string, environment: string) {
   const contentful = require('contentful')
 
   const client = contentful.createClient({
@@ -175,7 +175,7 @@ export async function getPreviewLandingBySlug(slug, environment) {
   return data;
 }
 
-export async function getPageContentBySlug(slug, options = defaultOptions) {
+export async function getPageContentBySlug(slug: string, options = defaultOptions) {
     const variables = { slug, preview: options.preview };
     const query = `
     query GetPageContentBySlug($slug: String!, $preview: Boolean!) {
@@ -327,7 +327,7 @@ export async function getTotalPostsNumber() {
   return totalPosts;
 }
 
-export async function getTotalPostsNumberForCategory(category) {
+export async function getTotalPostsNumberForCategory(category: string) {
   const query = `
     {
       blogCollection(order: date_DESC) {
@@ -378,7 +378,7 @@ export async function getAllCategories () {
   return allCategories;
 }
 
-export async function getBlogsByCategory (page, category) {
+export async function getBlogsByCategory (page, category: string) {
 
   const skipMultiplier = page === 1 ? 0 : page - 1;
   const skip =
@@ -474,7 +474,7 @@ export async function getAllBlogPosts () {
   return paginatedPostSummaries;
 }
 
-export async function getBlogBySlug(slug, options = defaultOptions) {
+export async function getBlogBySlug(slug: string, options = defaultOptions) {
   const variables = { slug, preview: options.preview };
   const query = `query GetPostBySlug($slug: String!, $preview: Boolean!) {
     blogCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
@@ -513,7 +513,7 @@ export async function getBlogBySlug(slug, options = defaultOptions) {
   return blog.pop();
 }
 
-export async function getRelatedBlogPosts(category) {
+export async function getRelatedBlogPosts(category: string) {
   const variables = { limit: 4, categoryName: category };
 
   const query = `
@@ -557,7 +557,7 @@ const defaultOptions = {
     environment: "master"
 };
 
-export async function callContentful(query, variables = {}, options = defaultOptions) {
+export async function callContentful(query: string, variables = {}, options = defaultOptions) {
     const fetchUrl = 
       options.environment == "master" ? 
       `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}` :

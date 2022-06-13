@@ -1,7 +1,7 @@
 import CardsSection from "./CardsSection";
 import Header from "./Header";
 import HeroImage from "./HeroImage";
-import PreviewBanner from "./PreviewBanner";
+import PreviewBanner from "./PreviewBanner.jsx";
 import SectionCard from "./SectionCard";
 
 export function Layout ({landingData, preview}) {

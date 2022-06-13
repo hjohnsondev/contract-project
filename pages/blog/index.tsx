@@ -1,19 +1,22 @@
 import { Config } from "../../utils/Config";
-import { getAllBlogPosts, getBlogBySlug, getPageContentBySlug, getAllCategories, getRelatedBlogPosts } from "../../utils/api";
-
-import MainLayout from "../../components/MainLayout";
 import PageMeta from "../../components/PageMeta";
+import MainLayout from "../../components/MainLayout.jsx";
 import Header from "../../components/Header";
-import SlugPage from "../../components/SlugPage";
-import PreviewBanner from "../../components/PreviewBanner";
 import Banner from "../../components/Banner";
+import BlogList from "../../components/BlogList";
 
-export default function BlogPage (props) {
+import { getPaginatedPostSummaries, getPageContentBySlug, getAllCategories } from "../../utils/api";
+import { blogLanding } from "../../types/blogLanding";
+import { GetStaticProps } from "next";
+
+export default function BlogPage (props: blogLanding) {
     const {
-        blogContent,
+        blogSummaries,
+        currentPage,
+        totalPages,
         pageContent,
-        allCategories,
-        relatedPosts
+        preview,
+        allCategories
     } = props;
 
     const headerData = pageContent.sectionsCollection.items.find((section) => section.internalName == "Head");
@@ -25,59 +28,51 @@ export default function BlogPage (props) {
     : "Blogs | Xtivia Inc. Blog Project";
 
     return (
-        <MainLayout>
+        <MainLayout preview={preview}>
             <PageMeta
                 title={pageTitle}
                 description={pageDescription}
                 url={Config.pageMeta.blogIndex.url}
             />
-            {props.preview && <PreviewBanner/>}
             {pageContent.header !== null && (
                 <Header headerData={headerData} blogHeader={true}/>
             )}
 
             {bannerData && <Banner bannerData={bannerData}/>}
 
-            <SlugPage
-                blog={blogContent}
+            <BlogList
+                blogs={blogSummaries}
+                totalPages={totalPages}
+                currentPage={currentPage}
                 allCategories={allCategories}
-                relatedPosts={relatedPosts}
             />
         </MainLayout>
-    )  
+    )    
 }
 
-export async function getStaticPaths() {
-    const allBlogs = await getAllBlogPosts();
-
-    return {
-        paths: allBlogs.items.map((blog) => {
-            return { params: { slug: blog.slug }}
-        }),
-        fallback: false
-    }
-}
-
-export async function getStaticProps({ params, preview = false, previewData = { environment: "master" }}) {
-
-    const blogContent = await getBlogBySlug(params.slug, { preview: preview, environment: previewData.environment });
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
+    const blogSummaries = await getPaginatedPostSummaries(1);
     const pageContent = await getPageContentBySlug(
       Config.pageMeta.blogIndex.slug,
       {
         preview: preview,
-        environment: previewData.environment
+        environment: "master"
       },
     );
     const allCategories = await getAllCategories();
-    const relatedPosts = await getRelatedBlogPosts(blogContent.categoryCollection.items[0].categoryName);
 
+    const totalPages = Math.ceil(
+      blogSummaries.total / Config.pagination.pageSize,
+    );
+  
     return {
       props: {
-        preview: preview || false,
-        blogContent: blogContent,
+        preview,
+        blogSummaries: blogSummaries.items,
+        totalPages,
+        currentPage: "1",
         pageContent: pageContent || null,
-        allCategories: allCategories,
-        relatedPosts: relatedPosts || null
+        allCategories: allCategories
       },
     };
-}
+  }
