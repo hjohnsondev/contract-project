@@ -65,8 +65,24 @@ a {
     @apply text-white bg-sky-500 md:bg-transparent md:text-sky-500
   }
 
+  .blue-hr {
+    @apply border-2 !border-sky-500 !mb-0
+  }
+
   .card-with-icon-text {
-    @apply text-center max-w-[70%] m-5 text-gray-500
+    @apply text-center max-w-[70%] m-5 text-gray-500 !mb-6
+  }
+
+  .card {
+    @apply flex space-y-6 flex-col h-full max-w-[32rem] bg-white
+  }
+
+  .card-icon {
+    @apply text-5xl text-sky-500 mt-6
+  }
+
+  .card-with-icon {
+    @apply items-center border-2 border-white hover:border-gray-300
   }
 
   /* content wrapper */
