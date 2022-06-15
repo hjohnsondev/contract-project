@@ -27,7 +27,7 @@
     "**/*.tsx",
     "pages/api/preview.js",
     "pages/api/exit-preview.ts"
-, "components/PreviewBanner.jsx", "components/SlugPage.jsx", "components/PreviewBanner.jsx", "components/CategoriesMenu.jsx", "components/Header.jsx", "components/Banner.js"  ],
+, "components/PreviewBanner.jsx", "components/SlugPage.jsx", "components/PreviewBanner.jsx", "components/CategoriesMenu.tsx", "components/Header.tsx", "components/Banner.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -3,7 +3,6 @@ import Head from "next/head";
 import { Layout } from "../components/Layout";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { landing } from "../types/landing";
-import MainLayout from "../components/MainLayout";
 
 export default function page (props: landing) {
   return (

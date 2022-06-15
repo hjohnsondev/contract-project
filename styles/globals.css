@@ -18,3 +18,59 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@layer components {
+  /* custom styles */
+  .btn {
+    @apply !px-7 !py-2
+  }
+
+  .btn-primary {
+    @apply bg-blue-500 text-white hover:bg-white hover:text-blue-600
+  }
+
+  .btn-secondary {
+    @apply border-solid border-2 border-neutral-400 hover:bg-blue-500 hover:text-white
+  }
+
+  .btn-secondary-dark {
+    @apply text-white bg-transparent
+  }
+
+  .btn-secondary-light {
+    @apply text-black bg-white
+  }
+
+  .headline {
+    @apply text-white text-center md:w-[32rem]
+  }
+
+  .text-light {
+    @apply md:!text-black !text-white
+  }
+
+  .text-dark {
+    @apply md:!text-white !text-white
+  }
+
+  .sub-title {
+    @apply md:text-xl md:w-[32rem] mb-3 text-center 
+  }
+
+  .nav-item {
+    @apply py-4 text-sky-500 font-extrabold md:bg-transparent md:text-white
+  }
+
+  .nav-item-selected {
+    @apply text-white bg-sky-500 md:bg-transparent md:text-sky-500
+  }
+
+  .card-with-icon-text {
+    @apply text-center max-w-[70%] m-5 text-gray-500
+  }
+
+  /* content wrapper */
+  .content-wrap {
+    @apply md:container md:mx-auto md:px-48 h-full prose
+  }
+}

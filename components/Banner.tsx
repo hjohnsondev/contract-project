@@ -3,7 +3,7 @@ import type * as CSS from 'csstype';
 export default function Banner ({ bannerData }) {
 
     const background: CSS.Properties = {
-        'backgroundImage': `url(${bannerData.backgroundImage.url})`
+        'backgroundImage': `url(${bannerData.backgroundImage.fields.file.url})`
     }
     
     return (
