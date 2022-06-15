@@ -1,4 +1,4 @@
-import CardsSection from "../ContentTypes/SetOfCards";
+import SetOfCards from "../ContentTypes/SetOfCards";
 import Header from "../ContentTypes/Header";
 import HeroImage from "../ContentTypes/HeroImage";
 import PreviewBanner from "../Common/PreviewBanner";
@@ -13,7 +13,7 @@ export function Layout ({landingData, preview}) {
     const components = sections?.map((section, index) => {
         if (section.sys.contentType.sys.id == "header") return <Header key={index} headerData={section.fields}/>
         if (section.sys.contentType.sys.id == "heroImage") return <HeroImage key={index} heroData={section.fields}/>
-        if (section.sys.contentType.sys.id == "setOfCard") return <CardsSection key={index} cardData={section.fields}/>
+        if (section.sys.contentType.sys.id == "setOfCard") return <SetOfCards key={index} cardData={section.fields}/>
         if (section.sys.contentType.sys.id == "card") return <SectionCard key={index} section={section.fields}/>
     })
 
