@@ -1,4 +1,3 @@
-import PaginationStyles from "./Pagination.module.css";
 import Link from "next/link";
 import ChevronLeft from "./svg/ChevronLeft";
 import ChevronRight from "./svg/ChevronRight";
@@ -16,12 +15,12 @@ export default function Pagination(props) {
   const nextPageUrl = `${route.asPath}/page/${parseInt(currentPage, 10) + 1}`;
 
   return (
-    <div className={PaginationStyles.pagination}>
-      <ol className={PaginationStyles.pagination__list}>
-        <li className={PaginationStyles.pagination__listItem}>
+    <div>
+      <ol>
+        <li>
           {prevDisabled && (
-            <span className={PaginationStyles.pagination__listItem__disabled}>
-              <span className={PaginationStyles.pagination__chevronContainer__left}>
+            <span>
+              <span>
                 <ChevronLeft />
               </span>
               <span>Previous page</span>
@@ -30,11 +29,7 @@ export default function Pagination(props) {
           {!prevDisabled && (
             <Link href={prevPageUrl}>
               <a>
-                <span
-                  className={
-                    PaginationStyles.pagination__chevronContainer__left
-                  }
-                >
+                <span>
                   <ChevronLeft />
                 </span>
                 <span>Previous page</span>
@@ -42,18 +37,14 @@ export default function Pagination(props) {
             </Link>
           )}
         </li>
-        <li
-          className={`${PaginationStyles.pagination__listItem} ${PaginationStyles.pagination__listItem__pageDescriptor}`}
-        >
+        <li>
           Page {currentPage} of {totalPages}
         </li>
-        <li className={PaginationStyles.pagination__listItem}>
+        <li>
           {nextDisabled && (
-            <span className={PaginationStyles.pagination__listItem__disabled}>
+            <span>
               <span>Next page</span>
-              <span
-                className={PaginationStyles.pagination__chevronContainer__right}
-              >
+              <span>
                 <ChevronRight />
               </span>
             </span>
@@ -62,11 +53,7 @@ export default function Pagination(props) {
             <Link href={nextPageUrl}>
               <a>
                 <span>Next page</span>
-                <span
-                  className={
-                    PaginationStyles.pagination__chevronContainer__right
-                  }
-                >
+                <span>
                   <ChevronRight />
                 </span>
               </a>

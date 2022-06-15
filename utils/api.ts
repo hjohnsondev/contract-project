@@ -1,114 +1,5 @@
  import { Config } from './Config';
- 
- export async function getBlogPageLanding () {
-    const query = `
-    {
-        pageLanding(id: "4GxddBH3iN4GV7sqCDNjj0") {
-          sectionsCollection (limit: 5) {
-            items {
-              ... on AllBlogs {
-                internalName
-                blogsCollection (limit:10 skip:0) {
-                  total
-                  items {
-                    title
-                    slug
-                    excerpt
-                    date
-                    thumbnail {
-                        title
-                        description
-                        contentType
-                        url
-                        width
-                        height
-                    }
-                    category {
-                      categoryName
-                    }
-                    content {
-                      json
-                    }
-                  }
-                }
-              }
-              ... on AllCategories {
-                categoriesCollection (limit:10) {
-                  items {
-                    categoryName
-                  }
-                }
-              }
-              ... on Footer {
-                internalName
-              }
-              ... on Header {
-                internalName
-                tagline
-                maxWidth
-                logo {
-                  image {
-                    url
-                  }
-                  title
-                  altText
-                  focalPoint
-                }
-                actionsCollection (limit:10) {
-                  items {
-                    materialDesignIcon {
-                      iconName
-                    }
-                    label
-                    isExternal
-                    displayStyle
-                  }
-                }
-                navigationMenu {
-                  internalName
-                  icon
-                  navigationItemsCollection (limit:10) {
-                    items {
-                      label
-                      slug
-                    }
-                  }
-                }
-                logoCardsCollection (limit:10) {
-                  items {
-                    materialDesignIcon {
-                      iconName
-                    }
-                    internalName
-                    title
-                    titleSize
-                    subText
-                    iconSize
-                    imagePosition
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `
-
-    const response = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
-        {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`
-            },
-            body: JSON.stringify({
-                query
-            })
-        }
-    )
-    const { data } = await response.json();
-    return {...data};
-}
+ const contentful = require('contentful')
 
 export async function getHomeLandingPageData () {
     const contentful = require('contentful')
@@ -175,90 +66,31 @@ export async function getPreviewLandingBySlug(slug: string, environment: string)
   return data;
 }
 
-export async function getPageContentBySlug(slug: string, options = defaultOptions) {
-    const variables = { slug, preview: options.preview };
-    const query = `
-    query GetPageContentBySlug($slug: String!, $preview: Boolean!) {
-        pageContentCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
-          items {
-            sys {
-              id
-            }
-            sectionsCollection {
-              items {
-                ... on Banner {
-                  internalName
-                  headline
-                  backgroundImage {
-                    title
-                    description
-                    url
-                    width
-                    height
-                  }
-                }
-                ... on Footer {
-                  internalName
-                }
-                ... on Header {
-                  internalName
-                  tagline
-                  maxWidth
-                  logo {
-                    image {
-                      url
-                    }
-                    title
-                    altText
-                    focalPoint
-                  }
-                  actionsCollection(limit: 10) {
-                    items {
-                        materialDesignIcon {
-                            iconName
-                        }
-                      label
-                      isExternal
-                      displayStyle
-                    }
-                  }
-                  navigationMenu {
-                    internalName
-                    icon
-                    navigationItemsCollection(limit: 10) {
-                      items {
-                        label
-                        slug
-                      }
-                    }
-                  }
-                  logoCardsCollection(limit: 10) {
-                    items {
-                      materialDesignIcon {
-                        iconName
-                      }
-                      internalName
-                      title
-                      titleSize
-                      subText
-                      iconSize
-                      imagePosition
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-    }`;
+export async function fetchBlogSections() {
+  const options = {
+    content_type: "blogPageContent",
+    "fields.slug": "blog",
+    include: 10
+  }
+  return fetchFromContentful(options)
+}
 
-    const response = await callContentful(query, variables, options);
+async function fetchFromContentful(options) {
+  return await fetchEntries(options);
+}
 
-    const pageContent = response.data.pageContentCollection.items
-      ? response.data.pageContentCollection.items
-      : [];
-
-    return pageContent.pop();
+async function fetchEntries(options) {
+  if (process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN) {
+    const client = contentful.createClient({
+      space: process.env.CONTENTFUL_SPACE_ID,
+      environment: 'master', // defaults to 'master' if not set
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+    })
+    const entries = await client.getEntries(options)
+    if (entries.items) return entries.items
+    console.error(`Error getting Entries for ${options.contentType}.`)
+  }
+  console.error(`Access Token is undefined`);
 }
 
 export async function getPaginatedPostSummaries(page) {
