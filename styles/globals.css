@@ -85,6 +85,26 @@ a {
     @apply items-center border-2 border-white hover:border-gray-300
   }
 
+  .banner {
+    @apply bg-cover bg-center w-full h-[13rem] overflow-hidden flex justify-center items-center
+  }
+
+  .banner-wrap {
+    @apply flex flex-col justify-center items-center prose
+  }
+
+  .category {
+    @apply transition ease-in-out duration-700 m-2 text-gray-400 group-hover:text-sky-500
+  }
+
+  .blog-button {
+    @apply transition ease-in-out duration-700 mb-3 w-[18%] font-semibold rounded border-solid border border-sky-500 hover:bg-sky-500 hover:text-white text-sky-500
+  }
+
+  .social-icon {
+    @apply ml-3 text-2xl text-gray-500 hover:text-sky-500
+  }
+
   /* content wrapper */
   .content-wrap {
     @apply md:container md:mx-auto md:px-48 h-full prose

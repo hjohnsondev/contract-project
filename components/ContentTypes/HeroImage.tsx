@@ -1,7 +1,7 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import HeroImageActions from './HeroImageActions';
+import HeroImageActions from '../Common/HeroImageActions';
 import cn from "classnames";
-import DarkOverlay from './DarkOverlay';
+import DarkOverlay from '../Common/DarkOverlay';
 
 function HeroImage ({heroData = null}) {
     let document = heroData?.subText;

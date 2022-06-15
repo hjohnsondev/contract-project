@@ -1,4 +1,4 @@
-import NavigationItem from "./NavigationItem"
+import NavigationItem from "../Common/NavigationItem"
 
 export default function NavigationMenu ({ navigationItems, headerData }) {
     return (

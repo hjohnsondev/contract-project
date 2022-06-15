@@ -27,7 +27,8 @@ module.exports = {
       // styles obj for typography plugin to share styles btwn defaults & custom classes
 			typographyStyles: ({ theme }) => ({
 				a: {
-
+					fontWeight: '600',
+					textDecoration: 'none'
 				},
 				blockquote: {
 
@@ -42,7 +43,7 @@ module.exports = {
           			margin: '0px 0px 10px 0',
 				},
 				h2: {
-					fontSize: '2.5rem',
+					fontSize: '2rem',
 					margin: '10px 0px 0px 0px',
 				},
 				h3: {

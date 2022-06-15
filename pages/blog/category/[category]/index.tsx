@@ -3,7 +3,7 @@ import { fetchBlogSections, getAllCategories, getBlogsByCategory, getTotalPostsN
 import { GetStaticPaths, GetStaticProps } from "next";
 
 import { blogLanding } from "../../../../types/blogLanding";
-import BlogPageLayout from "../../../../components/BlogPageLayout";
+import BlogPageLayout from "../../../../components/Layouts/BlogPageLayout";
 import { Config } from "../../../../utils/Config";
 
 export default function BlogPage (props: blogLanding) {

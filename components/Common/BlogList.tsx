@@ -1,4 +1,4 @@
-import Pagination from "./Pagination";
+import Pagination from "../Pagination";
 import CategoriesMenu from "./CategoriesMenu";
 import BlogComponent from "./BlogComponent";
 
@@ -7,7 +7,7 @@ export default function BlogList ({ blogs, totalPages, currentPage, allCategorie
     const nextDisabled = parseInt(currentPage, 10) === parseInt(totalPages, 10);
     const prevDisabled = parseInt(currentPage, 10) === 1;
 
-    return (<div className="md:container md:mx-auto px-48 h-full">
+    return (<div className="content-wrap">
         <div className="flex flex-wrap mt-10">
             <div className="flex flex-col space-y-10 basis-3/4">
                 {blogs.map((blog, index) => (

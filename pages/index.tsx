@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head'
-import { Layout } from '../components/Layout';
+import { Layout } from '../components/Layouts/Layout';
 import { getHomeLandingPageData } from '../utils/api'
 import { landing, preview } from '../types/landing';
 

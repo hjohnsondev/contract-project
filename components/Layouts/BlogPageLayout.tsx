@@ -1,10 +1,10 @@
 import MainLayout from "./MainLayout";
-import PageMeta from "./PageMeta";
-import BlogList from "./BlogList";
-import Header from "./Header";
-import Banner from "./Banner";
+import PageMeta from "../Common/PageMeta";
+import BlogList from "../Common/BlogList";
+import Header from "../ContentTypes/Header";
+import Banner from "../ContentTypes/Banner";
 
-import { Config } from "../utils/Config";
+import { Config } from "../../utils/Config";
 
 export default function BlogPageLayout ({ props }) {
     const {
