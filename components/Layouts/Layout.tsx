@@ -1,10 +1,10 @@
-import CardsSection from "./SetOfCards";
-import Header from "./Header";
-import HeroImage from "./HeroImage";
-import PreviewBanner from "./PreviewBanner.jsx";
-import SectionCard from "./SectionCard";
+import CardsSection from "../ContentTypes/SetOfCards";
+import Header from "../ContentTypes/Header";
+import HeroImage from "../ContentTypes/HeroImage";
+import PreviewBanner from "../Common/PreviewBanner";
+import SectionCard from "../SectionCard";
 import MainLayout from "./MainLayout";
-import Meta from "./Meta";
+import Meta from "../Common/Meta";
 
 export function Layout ({landingData, preview}) {
 

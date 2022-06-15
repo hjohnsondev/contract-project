@@ -1,7 +1,7 @@
-import HeaderLogoAndCards from "./HeaderLogoAndCards";
-import HeaderTagline from "./HeaderTagline";
+import HeaderLogoAndCards from "../Common/HeaderLogoAndCards";
+import HeaderTagline from "../Common/HeaderTagline";
 import NavigationMenu from "./NavigationMenu";
-import PopOutMenu from "./PopOutMenu";
+import PopOutMenu from "../Common/PopOutMenu";
 
 function Header ({ headerData }) {
 

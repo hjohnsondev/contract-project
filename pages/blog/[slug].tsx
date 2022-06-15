@@ -1,12 +1,12 @@
 import { Config } from "../../utils/Config";
 import { getAllBlogPosts, getBlogBySlug, getAllCategories, getRelatedBlogPosts, fetchBlogSections } from "../../utils/api";
 
-import MainLayout from "../../components/MainLayout";
-import PageMeta from "../../components/PageMeta";
-import Header from "../../components/Header";
-import SlugPage from "../../components/SlugPage";
-import PreviewBanner from "../../components/PreviewBanner";
-import Banner from "../../components/Banner";
+import MainLayout from "../../components/Layouts/MainLayout";
+import PageMeta from "../../components/Common/PageMeta";
+import Header from "../../components/ContentTypes/Header";
+import Blog from "../../components/ContentTypes/Blog";
+import PreviewBanner from "../../components/Common/PreviewBanner";
+import Banner from "../../components/ContentTypes/Banner";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 export default function BlogPage (props) {
@@ -34,7 +34,7 @@ export default function BlogPage (props) {
             {pageContent[0].fields.sections[0].fields && <Header headerData={pageContent[0].fields.sections[0].fields}/>}
             {pageContent[0].fields.sections[1].fields && <Banner bannerData={pageContent[0].fields.sections[1].fields}/>}
 
-            <SlugPage
+            <Blog
                 blog={blogContent}
                 allCategories={allCategories}
                 relatedPosts={relatedPosts}

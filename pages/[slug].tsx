@@ -1,6 +1,6 @@
 import { getAllLandingTypes, getLandingBySlug, getPreviewLandingBySlug } from "../utils/api"
 import Head from "next/head";
-import { Layout } from "../components/Layout";
+import { Layout } from "../components/Layouts/Layout";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { landing } from "../types/landing";
 

@@ -4,7 +4,7 @@ import { Config } from "../../../../../utils/Config";
 
 import { blogLanding } from "../../../../../types/blogLanding";
 import { GetStaticPaths, GetStaticProps } from "next";
-import BlogPageLayout from "../../../../../components/BlogPageLayout";
+import BlogPageLayout from "../../../../../components/Layouts/BlogPageLayout";
 
 export default function BlogPage (props: blogLanding) {
     return (<BlogPageLayout props={props}/>)  

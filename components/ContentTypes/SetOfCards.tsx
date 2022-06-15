@@ -1,5 +1,5 @@
 import cn from "classnames";
-import Card from "./Card";
+import Card from "../Common/Card";
 
 function CardsSection ({cardData: { cardDisplayStyle, cards, cardsInARow, title = null }}) {
     
@@ -13,7 +13,7 @@ function CardsSection ({cardData: { cardDisplayStyle, cards, cardsInARow, title 
         <div className="w-full bg-white top-0 left-0 h-full">
             <div className="content-wrap">
                 {title && <div className="flex mt-16 flex-col items-center justify-center">
-                    <h2>{title}</h2>
+                    <h2 className="mb-5">{title}</h2>
                     <hr className="blue-hr w-[5%]"/>
                 </div>}
                 <div className={displayStyle}>

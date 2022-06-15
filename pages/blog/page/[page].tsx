@@ -3,7 +3,7 @@ import { getTotalPostsNumber, getPaginatedPostSummaries, getAllCategories, fetch
 import { blogLanding } from "../../../types/blogLanding";
 import { GetStaticPaths } from "next";
 
-import BlogPageLayout from "../../../components/BlogPageLayout";
+import BlogPageLayout from "../../../components/Layouts/BlogPageLayout";
 
 export default function BlogIndexPage(props: blogLanding) {
   return (<BlogPageLayout props={props}/>) 
