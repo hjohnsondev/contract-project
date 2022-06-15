@@ -1,11 +1,10 @@
 import { Config } from "../../../utils/Config";
 import { getTotalPostsNumber, getPaginatedPostSummaries, getAllCategories, fetchBlogSections } from "../../../utils/api";
-import { blogLanding } from "../../../types/blogLanding";
 import { GetStaticPaths } from "next";
 
 import BlogPageLayout from "../../../components/Layouts/BlogPageLayout";
 
-export default function BlogIndexPage(props: blogLanding) {
+export default function BlogIndexPage(props) {
   return (<BlogPageLayout props={props}/>) 
 }
 

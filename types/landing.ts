@@ -1,16 +1,9 @@
 export interface landing {
-    landingData: landingData,
-    preview: preview
+    landingData: {
+        name?: string,
+        pageTitle: string,
+        sections: Record<string, any>,
+        slug: string,
+    },
+    preview: boolean
 }
-
-interface landingData {
-    metadata: metadata,
-    sys: any,
-    fields: any
-}
-
-interface metadata {
-    tags: Array<any>
-}
-
-export type preview = boolean;

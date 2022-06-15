@@ -1,6 +1,9 @@
 import type * as CSS from 'csstype';
+import { bannerTypes } from '../../types/common/bannerTypes';
 
-export default function Banner ({ bannerData }) {
+export default function Banner ({ bannerData }: bannerTypes) {
+
+    // console.log(bannerData);
 
     const background: CSS.Properties = {
         'backgroundImage': `url(${bannerData.backgroundImage.fields.file.url})`

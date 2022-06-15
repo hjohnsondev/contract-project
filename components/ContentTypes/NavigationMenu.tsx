@@ -1,6 +1,7 @@
+import { menuTypes } from "../../types/ContentTypes/headerTypes"
 import NavigationItem from "../Common/NavigationItem"
 
-export default function NavigationMenu ({ navigationItems, headerData }) {
+export default function NavigationMenu ({ navigationItems, icon }: menuTypes) {
     return (
         <nav className="hidden md:block bg-gray-800 w-full">
             <div className="content-wrap">
@@ -10,7 +11,7 @@ export default function NavigationMenu ({ navigationItems, headerData }) {
                             return (<NavigationItem key={index} item={item}/>)
                         })}
                     </div>
-                    <a href=""><div className={`mdi mdi-${headerData?.navigationMenu?.fields?.icon} text-4xl text-white hover:text-sky-500`}></div></a>
+                    <a href=""><div className={`mdi mdi-${icon} text-4xl text-white hover:text-sky-500`}></div></a>
                 </div>
             </div>
         </nav>

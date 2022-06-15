@@ -1,6 +1,7 @@
 import cn from "classnames"
+import { heroImageType } from "../../types/ContentTypes/heroImageTypes";
 
-export default function HeroImageActions ({heroData}) {
+export default function HeroImageActions ({ heroData }: heroImageType) {
     const actions = heroData?.actions;
     
     let actionAlignment = cn('', {
