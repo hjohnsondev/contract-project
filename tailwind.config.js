@@ -70,17 +70,6 @@ module.exports = {
 					'&>li': {
 						paddingLeft: '0'
 					}
-				},
-				img: {
-					marginTop: '0',
-					marginBottom: '0',
-				},
-				div: {
-					padding: '0',
-					margin: '0'
-				},
-				hr: {
-					margin: '20px 0px 0px 0px',
 				}
 			}),
 			typography: ({ theme }) => ({
