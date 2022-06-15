@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { itemTypes } from "../../types/ContentTypes/headerTypes";
 
-export default function NavigationItem ({key, item}) {
+export default function NavigationItem ({key, item}: itemTypes) {
     const navArrow = 
         <svg 
             className="w-4 h-4 text-sky-500" 

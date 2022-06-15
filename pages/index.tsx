@@ -2,12 +2,11 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head'
 import { Layout } from '../components/Layouts/Layout';
 import { getHomeLandingPageData } from '../utils/api'
-import { landing, preview } from '../types/landing';
 
-const Home = ({ landingData, preview = false }: landing) => {
+const Home = ({ landingData, preview = false }) => {
 
   return (
-    <Layout landingData={landingData} preview={preview}/>
+    <Layout landingData={landingData.fields} preview={preview}/>
   )
 }
 

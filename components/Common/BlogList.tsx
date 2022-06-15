@@ -1,10 +1,11 @@
 import Pagination from "../Pagination";
 import CategoriesMenu from "./CategoriesMenu";
 import BlogComponent from "./BlogComponent";
+import { blogListTypes } from "../../types/common/blogListTypes";
 
-export default function BlogList ({ blogs, totalPages, currentPage, allCategories }) {
+export default function BlogList ({ blogs, totalPages, currentPage, allCategories }: blogListTypes) {
 
-    const nextDisabled = parseInt(currentPage, 10) === parseInt(totalPages, 10);
+    const nextDisabled = parseInt(currentPage, 10) === parseInt(totalPages as string, 10);
     const prevDisabled = parseInt(currentPage, 10) === 1;
 
     return (<div className="content-wrap">

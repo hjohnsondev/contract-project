@@ -2,8 +2,11 @@ import Link from "next/link"
 import imageLoader from "../../imageLoader"
 import Image from "next/image"
 import BlogDetails from "./BlogDetails"
+import { blogPreviewType } from "../../types/common/blogListTypes";
 
-export default function BlogComponent({blog: { thumbnail, title, categoryCollection, date, excerpt, slug}}) {
+export default function BlogComponent({ blog }: blogPreviewType) {
+
+    const { thumbnail, title, categoryCollection, date, excerpt, slug } = blog;
 
     return (<div className="flex flex-wrap pr-10">
         <article className="flex flex-col space-y-5">

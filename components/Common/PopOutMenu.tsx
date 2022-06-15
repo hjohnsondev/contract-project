@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { header } from "../../types/ContentTypes/headerTypes";
 import HeaderIcon from "./HeaderIcon";
 import NavigationItem from "./NavigationItem";
 
-export default function PopOutMenu ({ headerData }) {
+export default function PopOutMenu ({ headerData }: header) {
     const icons = headerData?.actions;
     const logo = headerData?.logo?.fields?.image?.fields?.file?.url
     const altText = headerData?.logo?.fields?.image?.fields?.description;
     const headerCards = headerData?.logoCards;
     const navigationItems = headerData?.navigationMenu?.fields?.navigationItems;
-    const [showSidebar, setShowSidebar] = useState(false);
-    const [showDropbar, setShowDropbar] = useState(false);
+    const [showSidebar, setShowSidebar] = useState<boolean>(false);
+    const [showDropbar, setShowDropbar] = useState<boolean>(false);
     
     return (
         <nav className="md:hidden block border bg-white w-full">

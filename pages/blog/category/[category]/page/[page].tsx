@@ -2,11 +2,10 @@ import { fetchBlogSections, getAllCategories, getBlogsByCategory, getTotalPostsN
 
 import { Config } from "../../../../../utils/Config";
 
-import { blogLanding } from "../../../../../types/blogLanding";
 import { GetStaticPaths, GetStaticProps } from "next";
 import BlogPageLayout from "../../../../../components/Layouts/BlogPageLayout";
 
-export default function BlogPage (props: blogLanding) {
+export default function BlogPage (props) {
     return (<BlogPageLayout props={props}/>)  
 }
 

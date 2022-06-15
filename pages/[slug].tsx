@@ -1,12 +1,12 @@
 import { getAllLandingTypes, getLandingBySlug, getPreviewLandingBySlug } from "../utils/api"
-import Head from "next/head";
 import { Layout } from "../components/Layouts/Layout";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { landing } from "../types/landing";
 
-export default function page (props: landing) {
+export default function page ({ landingData, preview }) {
+  // console.log(landingData);
+
   return (
-    <Layout landingData={props.landingData} preview={props.preview}/>
+    <Layout landingData={landingData?.fields} preview={preview}/>
   )
 }
 

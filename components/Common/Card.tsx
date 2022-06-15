@@ -1,8 +1,11 @@
-export default function Card ({ card, key, cardsInARow }) {
-    let image = card?.fields?.image?.fields?.image?.fields?.file?.url;
-    let altText = card?.fields?.image?.fields?.altText;
-    let icon = card?.fields?.materialDesignIcon?.fields?.iconName
-    let subText = card?.fields?.subText
+import { cardTypes } from "../../types/ContentTypes/setOfCardsTypes";
+
+export default function Card ({ card, key, cardsInARow }: cardTypes) {
+    
+    let image = card?.fields?.image?.fields.image.fields.file.url;
+    let altText = card?.fields?.image?.fields.altText;
+    let icon = card?.fields?.materialDesignIcon?.fields.iconName
+    let subText = card.fields.subText
 
     return (
         <div key={key} className={`card basis-1/${cardsInARow} ${image ? '' : 'card-with-icon'} `}>

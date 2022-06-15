@@ -1,6 +1,7 @@
+import { logoAndCards } from "../../types/ContentTypes/headerTypes"
 import HeaderCard from "./HeaderCard"
 
-export default function HeaderLogoAndCards ({ logo, altText, headerCards }) {
+export default function HeaderLogoAndCards ({ logo, altText, headerCards }: logoAndCards) {
     return (
         <div className="hidden md:block w-full bg-white top-0 left-0 relative h-full">
             <div className="content-wrap">

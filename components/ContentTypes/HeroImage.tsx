@@ -3,8 +3,10 @@ import HeroImageActions from '../Common/HeroImageActions';
 import cn from "classnames";
 import DarkOverlay from '../Common/DarkOverlay';
 import RichTextComponent from '../Common/RichTextComponent';
+import { heroImageType } from '../../types/ContentTypes/heroImageTypes';
 
-function HeroImage ({heroData = null}) {
+function HeroImage ({ heroData }: heroImageType) {
+
     let document = heroData?.subText;
 
     const {

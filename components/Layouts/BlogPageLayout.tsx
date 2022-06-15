@@ -5,8 +5,10 @@ import Header from "../ContentTypes/Header";
 import Banner from "../ContentTypes/Banner";
 
 import { Config } from "../../utils/Config";
+import { blogListTypes } from "../../types/blogLanding";
 
-export default function BlogPageLayout ({ props }) {
+export default function BlogPageLayout ({ props }: blogListTypes) {
+
     const {
         blogSummaries,
         currentPage,
@@ -16,9 +18,9 @@ export default function BlogPageLayout ({ props }) {
         allCategories
     } = props;
     
-    const pageTitle = pageContent ? pageContent.title : "Blog";
-    const pageDescription = pageContent
-    ? pageContent.description
+    const pageTitle = pageContent[0].fields.title ? pageContent[0].fields.title : "Blog";
+    const pageDescription = pageContent[0].fields.description
+    ? pageContent[0].fields.description
     : "Blogs | Xtivia Inc. Blog Project";
 
     return (
