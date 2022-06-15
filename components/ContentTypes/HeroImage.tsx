@@ -2,6 +2,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import HeroImageActions from '../Common/HeroImageActions';
 import cn from "classnames";
 import DarkOverlay from '../Common/DarkOverlay';
+import RichTextComponent from '../Common/RichTextComponent';
 
 function HeroImage ({heroData = null}) {
     let document = heroData?.subText;
@@ -35,7 +36,7 @@ function HeroImage ({heroData = null}) {
                     <div className={`flex ${contentAlignment} justify-center items-center h-full`}>
                         <div className="flex flex-col">
                             {headline && <h1 className={`headline ${textAlign} ${darkenImage ? 'text-dark' : 'text-light'}`}>{headline}</h1>}
-                            {subText && <div className={`sub-title ${textAlign} ${darkenImage ? 'text-dark' : 'text-light'}`}>{documentToReactComponents(document)}</div>}
+                            {subText && <RichTextComponent entry={document} className={`sub-title mb-3 ${textAlign} ${darkenImage ? 'text-dark' : 'text-light'}`}/>}
                             {actions && <HeroImageActions heroData={heroData}/>}
                         </div>
                     </div>

@@ -5,6 +5,7 @@ import imageLoader from "../../imageLoader"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import RelatedBlog from "../Common/RelatedBlog";
 import BlogDetails from "../Common/BlogDetails";
+import RichTextComponent from "../Common/RichTextComponent";
 
 export default function Blog({ blog: { thumbnail, title, categoryCollection, date, content, slug}, allCategories, relatedPosts }) {
 
@@ -16,9 +17,7 @@ export default function Blog({ blog: { thumbnail, title, categoryCollection, dat
                     <h2>{title}</h2>
                     <BlogDetails date={date} categoryCollection={categoryCollection}/>
                     <hr/>
-                    <div className="flex flex-col space-y-5 text-gray-500">
-                        {documentToReactComponents(content.json)}
-                    </div>
+                    <RichTextComponent entry={content.json} className={`text-gray-500`}/>
                     <div className="flex justify-between text-lg">
                        <p className="font-semibold">Share this post:</p> 
                        <div className="flex items-center">
