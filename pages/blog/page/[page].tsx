@@ -5,7 +5,7 @@ import { GetStaticPaths } from "next";
 import BlogPageLayout from "../../../components/Layouts/BlogPageLayout";
 
 export default function BlogIndexPage(props) {
-  return (<BlogPageLayout props={props}/>) 
+  return (<BlogPageLayout {...props}/>) 
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

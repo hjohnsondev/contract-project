@@ -26,11 +26,11 @@ a {
   }
 
   .btn-primary {
-    @apply bg-blue-500 text-white hover:bg-white hover:text-blue-600
+    @apply border-solid border-neutral-400 bg-blue-500 text-white hover:bg-white hover:text-blue-600
   }
 
   .btn-secondary {
-    @apply border-solid border-2 border-neutral-400 hover:bg-blue-500 hover:text-white
+    @apply border-solid border border-neutral-400 hover:bg-blue-500 hover:text-white
   }
 
   .btn-secondary-dark {
@@ -38,7 +38,7 @@ a {
   }
 
   .btn-secondary-light {
-    @apply text-black bg-white
+    @apply text-black bg-transparent
   }
 
   .headline {

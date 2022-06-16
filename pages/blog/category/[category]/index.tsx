@@ -6,7 +6,7 @@ import BlogPageLayout from "../../../../components/Layouts/BlogPageLayout";
 import { Config } from "../../../../utils/Config";
 
 export default function BlogPage (props) {
-    return (<BlogPageLayout props={props}/>) 
+    return (<BlogPageLayout {...props}/>) 
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

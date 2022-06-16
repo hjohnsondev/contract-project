@@ -1,5 +1,6 @@
 import { imageWithFocalPoint } from "./headerTypes"
 import { Document } from '@contentful/rich-text-types';
+import { Entry } from "contentful"
 
 interface heroAction {
     displayStyle: string,
@@ -10,19 +11,19 @@ interface heroAction {
     theme: string
 }
 
-export interface heroImageType {
-    heroData: {
-        actionAlignment: string,
-        actions: { fields: heroAction }[],
-        contentMaxWidth: number,
-        darkenImage: boolean,
-        headline: string,
-        headlineSize: string,
-        image: { fields: imageWithFocalPoint },
-        internalName: string,
-        maxWidth: number,
-        sectionAlignment: string,
-        subText: Document,
-        textAlignment: string,
-    }
+export interface heroImageTypeFields {
+    actionAlignment: string,
+    actions: Entry<heroAction>[],
+    contentMaxWidth: number,
+    darkenImage: boolean,
+    headline: string,
+    headlineSize: string,
+    image: Entry<imageWithFocalPoint>,
+    internalName: string,
+    maxWidth: number,
+    sectionAlignment: string,
+    subText: Document,
+    textAlignment: string,
 }
+
+export interface heroImageType extends Entry<heroImageTypeFields> { key: number }

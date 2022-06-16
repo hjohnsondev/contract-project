@@ -1,7 +1,7 @@
 import Pagination from "../Pagination";
 import CategoriesMenu from "./CategoriesMenu";
 import BlogComponent from "./BlogComponent";
-import { blogListTypes } from "../../types/common/blogListTypes";
+import { blogListTypes } from "../../types/Common/blogListTypes";
 
 export default function BlogList ({ blogs, totalPages, currentPage, allCategories }: blogListTypes) {
 

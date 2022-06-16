@@ -1,3 +1,5 @@
+import { Entry } from "contentful"
+
 export interface category {
     categoryName: string,
 }
@@ -27,12 +29,10 @@ interface pageStructure {
 }
 
 export interface blogListTypes {
-    props: {
-        allCategories: string[],
-        blogSummaries: blogPreview[],
-        currentPage: string,
-        pageContent: { fields: pageStructure }[],
-        preview: boolean,
-        totalPages: number
-    }
+    allCategories: string[],
+    blogSummaries: blogPreview[],
+    currentPage: string,
+    pageContent: Entry<pageStructure>[],
+    preview: boolean,
+    totalPages: number
 }

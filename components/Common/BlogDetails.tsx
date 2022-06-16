@@ -1,4 +1,4 @@
-import { blogDetails } from "../../types/common/blogListTypes"
+import { blogDetails } from "../../types/Common/blogListTypes"
 
 export default function BlogDetails ({ date, categoryCollection }: blogDetails) {
     return (

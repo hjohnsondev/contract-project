@@ -7,7 +7,7 @@ import Banner from "../ContentTypes/Banner";
 import { Config } from "../../utils/Config";
 import { blogListTypes } from "../../types/blogLanding";
 
-export default function BlogPageLayout ({ props }: blogListTypes) {
+export default function BlogPageLayout (props: blogListTypes) {
 
     const {
         blogSummaries,
@@ -31,8 +31,8 @@ export default function BlogPageLayout ({ props }: blogListTypes) {
                 url={Config.pageMeta.blogIndex.url}
             />
 
-            {pageContent[0].fields.sections[0].fields && <Header headerData={pageContent[0].fields.sections[0].fields}/>}
-            {pageContent[0].fields.sections[1].fields && <Banner bannerData={pageContent[0].fields.sections[1].fields}/>}
+            {pageContent[0].fields.sections[0].fields && <Header {...pageContent[0].fields.sections[0]}/>}
+            {pageContent[0].fields.sections[1].fields && <Banner {...pageContent[0].fields.sections[1]}/>}
 
             <BlogList
                 blogs={blogSummaries}

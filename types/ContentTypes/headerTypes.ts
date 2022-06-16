@@ -1,13 +1,23 @@
+import { Entry } from "contentful"
+
 export interface image {
     description: string,
-    file: { url: string },
+    file: { 
+        url: string,
+        details: {
+            image: {
+                width: number,
+                height: number
+            }
+        }
+    },
     title: string,
 }
 
 export interface imageWithFocalPoint {
     altText: string,
     focalPoint: any,
-    image: { fields: image },
+    image: Entry<image>,
     title: string,
 }
 
@@ -21,7 +31,7 @@ interface action {
     internalName: string,
     isExternal: boolean,
     label: string,
-    materialDesignIcon: { fields: materialIcon },
+    materialDesignIcon: Entry<materialIcon>,
     target: string,
 }
 
@@ -34,53 +44,52 @@ interface navigationItem {
 interface navigationMenu {
     icon: string,
     internalName: string,
-    navigationItems: { fields: navigationItem }[],
+    navigationItems: Entry<navigationItem>[],
 }
 
 export interface headerCard {
     iconSize: string,
     imagePosition: string,
     internalName: string,
-    materialDesignIcon: { fields: materialIcon },
+    materialDesignIcon: Entry<materialIcon>,
     subText: string,
     title: string,
     titleSize: string,
 }
 
-export interface header {
-    headerData: {
-        actions: { fields: action }[],
-        internalName: string,
-        logo: { fields: imageWithFocalPoint },
-        logoCards: { fields: headerCard }[],
-        maxWidth: number,
-        navigationMenu: { fields: navigationMenu },
-        tagline: string
-    }
+export interface headerFields {
+    actions: Entry<action>[],
+    internalName: string,
+    logo: Entry<imageWithFocalPoint>,
+    logoCards: Entry<headerCard>[],
+    maxWidth: number,
+    navigationMenu: Entry<navigationMenu>,
+    tagline: string
 }
+
+export interface header extends Entry<headerFields> { key: number }
 
 export interface tagline {
     tagLine: string,
-    icons: { fields: action }[],
+    icons: Entry<action>[],
 }
 
 export interface headerIcon {
-    icon: { fields: action },
+    icon: Entry<action>,
     key: number
 }
 
 export interface logoAndCards {
-    logo: string,
-    altText: string,
-    headerCards: { fields: headerCard }[]
+    logo: Entry<imageWithFocalPoint>,
+    logoCards: Entry<headerCard>[]
 }
 
 export interface menuTypes {
     icon: string,
-    navigationItems: { fields: navigationItem }[]
+    navigationItems: Entry<navigationItem>[]
 }
 
 export interface itemTypes {
-    item: { fields: navigationItem },
+    item: Entry<navigationItem>,
     key: number
 }

@@ -8,6 +8,8 @@ import { blogTypes } from "../../types/ContentTypes/blogTypes";
 
 export default function Blog({ blog, allCategories, relatedPosts }: blogTypes) {
 
+    console.log(blog);
+
     const { 
         thumbnail, 
         title, 
