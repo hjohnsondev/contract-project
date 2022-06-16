@@ -105,6 +105,10 @@ a {
     @apply ml-3 text-2xl text-gray-500 hover:text-sky-500
   }
 
+  .center-row {
+    @apply flex justify-between items-center
+  }
+
   /* content wrapper */
   .content-wrap {
     @apply md:container md:mx-auto md:px-48 h-full prose

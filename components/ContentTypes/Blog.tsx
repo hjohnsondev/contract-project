@@ -1,13 +1,21 @@
 import CategoriesMenu from "../Common/CategoriesMenu"
 import Image from "next/image"
 import imageLoader from "../../imageLoader"
-
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import RelatedBlog from "../Common/RelatedBlog";
 import BlogDetails from "../Common/BlogDetails";
 import RichTextComponent from "../Common/RichTextComponent";
+import { blogTypes } from "../../types/ContentTypes/blogTypes";
 
-export default function Blog({ blog: { thumbnail, title, categoryCollection, date, content, slug}, allCategories, relatedPosts }) {
+export default function Blog({ blog, allCategories, relatedPosts }: blogTypes) {
+
+    const { 
+        thumbnail, 
+        title, 
+        categoryCollection, 
+        date, 
+        content, 
+        slug
+    } = blog
 
     return (
         <div className="content-wrap">

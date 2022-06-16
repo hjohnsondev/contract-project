@@ -8,7 +8,7 @@ export default function BlogPage (props) {
     return (<BlogPageLayout props={props}/>) 
 }
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }: { preview: boolean }) => {
     const blogSummaries = await getPaginatedPostSummaries(1);
     const pageContent = await fetchBlogSections();
     const allCategories = await getAllCategories();

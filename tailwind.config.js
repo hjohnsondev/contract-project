@@ -53,7 +53,8 @@ module.exports = {
 					
 				},
 				h5: {
-					
+					fontWeight: '600',
+					fontSize: '1.3rem',
 				},
 				h6: {
 				},
