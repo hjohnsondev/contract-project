@@ -1,5 +1,5 @@
 import type * as CSS from 'csstype';
-import { bannerTypes } from '../../types/Common/bannerTypes';
+import { bannerTypes } from '../../types/CommonTypes/bannerTypes';
 
 export default function Banner (props: bannerTypes) {
 

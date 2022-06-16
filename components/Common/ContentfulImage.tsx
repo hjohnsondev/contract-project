@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ContentfulImageProps } from '../../types/Common/types';
+import { ContentfulImageProps } from '../../types/CommonTypes/types';
 
 const ContentfulImage = (props: ContentfulImageProps) => {
   //console.log(props);
