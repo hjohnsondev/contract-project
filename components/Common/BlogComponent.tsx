@@ -2,7 +2,7 @@ import Link from "next/link"
 import imageLoader from "../../imageLoader"
 import Image from "next/image"
 import BlogDetails from "./BlogDetails"
-import { blogPreviewType } from "../../types/Common/blogListTypes"
+import { blogPreviewType } from "../../types/ContentTypes/blogComponentTypes"
 
 export default function BlogComponent({ blog }: blogPreviewType) {
 
