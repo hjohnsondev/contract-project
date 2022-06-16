@@ -3,6 +3,7 @@ import { Config } from "../../utils/Config";
 import OpenGraph from "../../utils/OpenGraph";
 
 export default function PageMeta(props) {
+
   const { title, description, url, canonical } = props;
   const siteTitle = `${title} | ${Config.site.title}`;
 

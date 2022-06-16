@@ -2,8 +2,10 @@ import Link from "next/link";
 import ChevronLeft from "./svg/ChevronLeft";
 import ChevronRight from "./svg/ChevronRight";
 import { useRouter } from "next/router";
+import { paginationTypes } from "../../types/common/paganationTypes";
 
-export default function Pagination(props) {
+export default function Pagination(props: paginationTypes) {
+
   const { totalPages, currentPage, prevDisabled, nextDisabled } = props;
   const route = useRouter();
 
@@ -11,15 +13,15 @@ export default function Pagination(props) {
   const prevPageUrl =
     currentPage === "2"
       ? "/blog"
-      : `${route.asPath}/page/${parseInt(currentPage, 10) - 1}`;
-  const nextPageUrl = `${route.asPath}/page/${parseInt(currentPage, 10) + 1}`;
+      : `${route.asPath}/page/${parseInt(currentPage as string, 10) - 1}`;
+  const nextPageUrl = `${route.asPath}/page/${parseInt(currentPage as string, 10) + 1}`;
 
   return (
-    <div>
-      <ol>
-        <li>
+    <div className="mt-5">
+      <div className="center-row">
+        <div>
           {prevDisabled && (
-            <span>
+            <span className="center-row">
               <span>
                 <ChevronLeft />
               </span>
@@ -28,7 +30,7 @@ export default function Pagination(props) {
           )}
           {!prevDisabled && (
             <Link href={prevPageUrl}>
-              <a>
+              <a className="center-row">
                 <span>
                   <ChevronLeft />
                 </span>
@@ -36,13 +38,13 @@ export default function Pagination(props) {
               </a>
             </Link>
           )}
-        </li>
-        <li>
+        </div>
+        <div>
           Page {currentPage} of {totalPages}
-        </li>
-        <li>
+        </div>
+        <div>
           {nextDisabled && (
-            <span>
+            <span className="center-row">
               <span>Next page</span>
               <span>
                 <ChevronRight />
@@ -51,7 +53,7 @@ export default function Pagination(props) {
           )}
           {!nextDisabled && (
             <Link href={nextPageUrl}>
-              <a>
+              <a className="center-row">
                 <span>Next page</span>
                 <span>
                   <ChevronRight />
@@ -59,8 +61,8 @@ export default function Pagination(props) {
               </a>
             </Link>
           )}
-        </li>
-      </ol>
+        </div>
+      </div>
     </div>
   );
 }
