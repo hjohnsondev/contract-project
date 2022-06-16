@@ -24,7 +24,6 @@ export default function HeaderLogoAndCards ({ logo, logoCards }: logoAndCards) {
             }
         }
     } = logo
-    console.log(logo)
 
     return (
         <div className="hidden md:block w-full bg-white top-0 left-0 relative h-full">

@@ -6,6 +6,8 @@ import { blogPreviewType } from "../../types/Common/blogListTypes"
 
 export default function BlogComponent({ blog }: blogPreviewType) {
 
+    // console.log(blog)
+
     const { thumbnail, title, categoryCollection, date, excerpt, slug } = blog;
 
     return (<div className="flex flex-wrap pr-10">
