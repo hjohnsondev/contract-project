@@ -12,9 +12,9 @@ export function Layout ({ landingData, preview }: landing) {
     const sections = landingData?.sections;
     
     const components = sections?.map((section: any, index: number) => {
-        if (section.sys.contentType.sys.id == "header") return <Header key={index} headerData={section.fields}/>
-        if (section.sys.contentType.sys.id == "heroImage") return <HeroImage key={index} heroData={section.fields}/>
-        if (section.sys.contentType.sys.id == "setOfCard") return <SetOfCards key={index} cardData={section.fields}/>
+        if (section.sys.contentType.sys.id == "header") return <Header key={index} {...section}/>
+        if (section.sys.contentType.sys.id == "heroImage") return <HeroImage key={index} {...section}/>
+        if (section.sys.contentType.sys.id == "setOfCard") return <SetOfCards key={index} {...section}/>
         if (section.sys.contentType.sys.id == "card") return <SectionCard key={index} section={section.fields}/>
     })
 

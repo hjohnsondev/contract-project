@@ -4,21 +4,34 @@ import NavigationMenu from "./NavigationMenu";
 import PopOutMenu from "../Common/PopOutMenu";
 import { header } from "../../types/ContentTypes/headerTypes";
 
-function Header ({ headerData }: header) {
+function Header (props: header) {
 
-    const tagLine = headerData?.tagline;
-    const icons = headerData?.actions;
-    const logo = headerData?.logo?.fields?.image?.fields?.file?.url
-    const altText = headerData?.logo?.fields?.image?.fields?.description;
-    const headerCards = headerData?.logoCards;
-    const navigationItems = headerData?.navigationMenu?.fields?.navigationItems;
+    const {
+        fields: {
+            actions,
+            internalName,
+            logo,
+            logoCards,
+            maxWidth,
+            navigationMenu,
+            tagline
+        },
+        sys,
+        metadata,
+        key,
+    } = props
+
+    const tagLine = props.fields.tagline;
+    const icons = actions;
+    const altText = logo?.fields?.image?.fields?.description;
+    const navigationItems = navigationMenu?.fields?.navigationItems;
 
     return (
         <div>
             {tagLine && <HeaderTagline tagLine={tagLine} icons={icons}/>}
-            {logo && <HeaderLogoAndCards logo={logo} altText={altText} headerCards={headerCards}/>}
-            {navigationItems && <NavigationMenu navigationItems={navigationItems} icon={headerData?.navigationMenu?.fields?.icon}/>}
-            {navigationItems && <PopOutMenu headerData={headerData}/>}
+            {logo && <HeaderLogoAndCards logo={logo} logoCards={logoCards}/>}
+            {navigationItems && <NavigationMenu navigationItems={navigationItems} icon={props.fields?.navigationMenu?.fields?.icon}/>}
+            {navigationItems && <PopOutMenu {...props}/>}
         </div>
     )
 }

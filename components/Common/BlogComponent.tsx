@@ -2,9 +2,11 @@ import Link from "next/link"
 import imageLoader from "../../imageLoader"
 import Image from "next/image"
 import BlogDetails from "./BlogDetails"
-import { blogPreviewType } from "../../types/common/blogListTypes";
+import { blogPreviewType } from "../../types/ContentTypes/blogComponentTypes"
 
 export default function BlogComponent({ blog }: blogPreviewType) {
+
+    // console.log(blog)
 
     const { thumbnail, title, categoryCollection, date, excerpt, slug } = blog;
 

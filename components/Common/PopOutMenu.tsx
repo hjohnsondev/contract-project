@@ -3,12 +3,25 @@ import { header } from "../../types/ContentTypes/headerTypes";
 import HeaderIcon from "./HeaderIcon";
 import NavigationItem from "./NavigationItem";
 
-export default function PopOutMenu ({ headerData }: header) {
-    const icons = headerData?.actions;
-    const logo = headerData?.logo?.fields?.image?.fields?.file?.url
-    const altText = headerData?.logo?.fields?.image?.fields?.description;
-    const headerCards = headerData?.logoCards;
-    const navigationItems = headerData?.navigationMenu?.fields?.navigationItems;
+export default function PopOutMenu (props: header) {
+    const {
+        fields: {
+            actions,
+            internalName,
+            logo,
+            logoCards,
+            maxWidth,
+            navigationMenu,
+            tagline
+        },
+        sys,
+        metadata
+    } = props
+
+    const icons = actions;
+    const src = logo?.fields?.image?.fields?.file?.url
+    const altText = logo?.fields?.image?.fields?.description;
+    const navigationItems = navigationMenu?.fields?.navigationItems;
     const [showSidebar, setShowSidebar] = useState<boolean>(false);
     const [showDropbar, setShowDropbar] = useState<boolean>(false);
     
@@ -42,7 +55,7 @@ export default function PopOutMenu ({ headerData }: header) {
                                 <rect y="60" width="100" height="10"></rect>
                             </svg>
                     )}
-                    <img className="p-3" src={logo} alt={altText}/>
+                    <img className="p-3" src={src} alt={altText}/>
                 </div>
                 <div className="text-4xl mr-3 mdi mdi-dots-vertical" onClick={() => {
                     setShowDropbar(!showDropbar) 
@@ -66,7 +79,7 @@ export default function PopOutMenu ({ headerData }: header) {
                         })}
                     </div>
                     <div className="flex flex-wrap pt-4 justify-center items-center">
-                        {headerCards?.map((card, index) => {
+                        {logoCards?.map((card, index) => {
                             return (
                                 <div key={index} className="flex basis-1/2 flex-col justify-center items-center h-full">
                                     <div className={`text-4xl text-sky-500 mdi mdi-${card?.fields?.materialDesignIcon?.fields?.iconName}`}></div>  

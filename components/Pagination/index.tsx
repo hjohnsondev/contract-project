@@ -2,7 +2,7 @@ import Link from "next/link";
 import ChevronLeft from "./svg/ChevronLeft";
 import ChevronRight from "./svg/ChevronRight";
 import { useRouter } from "next/router";
-import { paginationTypes } from "../../types/common/paganationTypes";
+import { paginationTypes } from "../../types/CommonTypes/paganationTypes";
 
 export default function Pagination(props: paginationTypes) {
 

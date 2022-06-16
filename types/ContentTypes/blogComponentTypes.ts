@@ -1,4 +1,5 @@
-import { blogPreview, category } from "../blogLanding";
+import { blogPreview } from "../blogLanding"
+import { category } from "../blogLanding"
 
 export interface blogListTypes {
     blogs: blogPreview[],

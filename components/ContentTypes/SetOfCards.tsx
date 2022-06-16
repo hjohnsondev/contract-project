@@ -2,11 +2,21 @@ import cn from "classnames";
 import { setOfCardTypes } from "../../types/ContentTypes/setOfCardsTypes";
 import Card from "../Common/Card";
 
-function CardsSection ({ cardData }: setOfCardTypes) {
+function CardsSection (props: setOfCardTypes) {
 
     // console.log(cardData);
 
-    const { cardDisplayStyle, cards, cardsInARow, title = null } = cardData
+    const { 
+        fields: {
+            cardDisplayStyle, 
+            cards, 
+            cardsInARow, 
+            title = null 
+        },
+        sys,
+        metadata,
+        key
+    } = props
     
     const displayStyle = cn('flex p-5 flex-col', {
         'md:flex-col md:justify-center md:space-y-16': cardDisplayStyle == "Vertical",

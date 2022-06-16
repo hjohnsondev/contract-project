@@ -5,7 +5,7 @@ import { GetStaticProps } from "next";
 import BlogPageLayout from "../../components/Layouts/BlogPageLayout";
 
 export default function BlogPage (props) {
-    return (<BlogPageLayout props={props}/>) 
+    return (<BlogPageLayout {...props}/>) 
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }: { preview: boolean }) => {

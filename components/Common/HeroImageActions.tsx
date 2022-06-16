@@ -1,25 +1,43 @@
 import cn from "classnames"
 import { heroImageType } from "../../types/ContentTypes/heroImageTypes";
 
-export default function HeroImageActions ({ heroData }: heroImageType) {
-    const actions = heroData?.actions;
+export default function HeroImageActions (props: heroImageType) {
+
+    const {
+        fields: {
+            actions,
+            darkenImage,
+            actionAlignment,
+            textAlignment
+        },
+        sys,
+        metadata,
+        key
+    } = props
     
-    let actionAlignment = cn('', {
-        'md:justify-center': heroData?.textAlignment == "Center",
-        'md:justify-end': heroData?.textAlignment == "Right",
-        'md:md:justify-start': heroData?.textAlignment == "Left",
+    let alignment = cn('flex justify-center', {
+        'md:space-x-3': actionAlignment == "Horizontal",
+        'md:justify-start': textAlignment == "Left",
+        'md:justify-center': textAlignment == "Center",
+        'md:justify-end': textAlignment == "Right",
+        'md:items-start md:flex-col': textAlignment == "Left" && actionAlignment == "Vertical",
+        'md:items-center md:flex-col': textAlignment == "Center" && actionAlignment == "Vertical",
+        'md:items-end md:flex-col': textAlignment == "Right" && actionAlignment == "Vertical",
     })
 
     return (
-        <div className={`${actionAlignment} flex justify-center items-center space-x-3 md:${heroData?.actionAlignment == "Horizontal" ? "flex" : "flex md:flex-col"}`}>
+        <div className={alignment}>
             {actions?.map((action, index) => {
-                if (action?.fields?.theme == "primary") {
-                    return (
-                        <button key={index} className="btn btn-primary">{action?.fields?.label}</button>
-                    )
-                }
+                let theme = action?.fields?.theme;
+                let button = cn('btn', {
+                    'btn-primary': action?.fields?.theme == "primary",
+                    'btn-secondary btn-secondary-dark': darkenImage && theme != "primary",
+                    'btn-secondary btn-secondary-light': !darkenImage && theme != "primary",
+                    'ml-3': index > 0 && actionAlignment !== "Vertical",
+                    'mt-3': index > 0 && actionAlignment != "Horizontal"
+                })
                 return (
-                    <button key={index} className={`btn btn-secondary ${heroData?.darkenImage ? 'btn-secondary-dark' : 'btn-secondary-light'}`}>{action?.fields?.label}</button>
+                    <button key={index} className={button}>{action?.fields?.label}</button>
                 )
             })}
         </div>

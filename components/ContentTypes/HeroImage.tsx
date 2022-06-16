@@ -4,20 +4,24 @@ import cn from "classnames";
 import DarkOverlay from '../Common/DarkOverlay';
 import RichTextComponent from '../Common/RichTextComponent';
 import { heroImageType } from '../../types/ContentTypes/heroImageTypes';
+import ContentfulImage from '../Common/ContentfulImage';
 
-function HeroImage ({ heroData }: heroImageType) {
-
-    let document = heroData?.subText;
+function HeroImage (props: heroImageType) {
 
     const {
-        actions,
-        darkenImage,
-        headline,
-        image,
-        sectionAlignment,
-        subText,
-        textAlignment
-    } = heroData
+        fields: {
+            actions,
+            darkenImage,
+            headline,
+            image,
+            sectionAlignment,
+            subText,
+            textAlignment
+        },
+        sys,
+        metadata,
+        key
+    } = props
 
     let contentAlignment = cn('', {
             'md:justify-start': sectionAlignment === "Left",
@@ -38,14 +42,22 @@ function HeroImage ({ heroData }: heroImageType) {
                     <div className={`flex ${contentAlignment} justify-center items-center h-full`}>
                         <div className="flex flex-col">
                             {headline && <h1 className={`headline ${textAlign} ${darkenImage ? 'text-dark' : 'text-light'}`}>{headline}</h1>}
-                            {subText && <RichTextComponent entry={document} className={`sub-title mb-3 ${textAlign} ${darkenImage ? 'text-dark' : 'text-light'}`}/>}
-                            {actions && <HeroImageActions heroData={heroData}/>}
+                            {subText && <RichTextComponent entry={subText} className={`sub-title mb-3 ${textAlign} ${darkenImage ? 'text-dark' : 'text-light'}`}/>}
+                            {actions && <HeroImageActions {...props}/>}
                         </div>
                     </div>
                 </div>
             </div>
             <div className="flex items-center min-h-[20rem] md:max-h-[50rem] md:overflow-hidden">
-                <img className="w-full h-full" src={image?.fields?.image?.fields?.file?.url} alt={image?.fields?.altText}/>
+                <ContentfulImage
+                    src={image?.fields?.image?.fields?.file?.url}
+                    width={null} //null due to layout === fill
+                    height={null} //null due to layout === fill
+                    alt={image?.fields?.altText}
+                    layout={'fill'}
+                    objectFit={'cover'}
+                    className={'-z-10'}
+                />
             </div>
         </div>
     )

@@ -31,8 +31,8 @@ export default function BlogPage (props) {
             />
             {props.preview && <PreviewBanner/>}
             
-            {pageContent[0].fields.sections[0].fields && <Header headerData={pageContent[0].fields.sections[0].fields}/>}
-            {pageContent[0].fields.sections[1].fields && <Banner bannerData={pageContent[0].fields.sections[1].fields}/>}
+            {pageContent[0].fields.sections[0].fields && <Header {...pageContent[0].fields.sections[0]}/>}
+            {pageContent[0].fields.sections[1].fields && <Banner {...pageContent[0].fields.sections[1]}/>}
 
             <Blog
                 blog={blogContent}
