@@ -3,7 +3,7 @@ import { ContentfulImageProps } from '../../types/CommonTypes/types';
 
 const ContentfulImage = (props: ContentfulImageProps) => {
   //console.log(props);
-  const { alt, height, layout, quality, src, width, objectPosition } = props;
+  const { alt = "decorative", height, layout, quality, src, width, objectPosition } = props;
 
   const contentfulLoader = () => {
     const format = '&fm=webp'

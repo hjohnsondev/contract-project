@@ -18,7 +18,6 @@ function Header (props: header) {
         },
         sys,
         metadata,
-        key,
     } = props
 
     const tagLine = props.fields.tagline;

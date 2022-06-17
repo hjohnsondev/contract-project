@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { header } from "../../types/ContentTypes/headerTypes";
+import ContentfulImage from "../ContentfulImage";
 import HeaderIcon from "./HeaderIcon";
 import NavigationItem from "./NavigationItem";
 
@@ -18,20 +19,37 @@ export default function PopOutMenu (props: header) {
         metadata
     } = props
 
+    const {
+        fields: {
+            altText,
+            image: {
+                fields: {
+                    file: {
+                        url,
+                        details: {
+                            image: {
+                                width,
+                                height
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } = logo
+
     const icons = actions;
-    const src = logo?.fields?.image?.fields?.file?.url
-    const altText = logo?.fields?.image?.fields?.description;
     const navigationItems = navigationMenu?.fields?.navigationItems;
     const [showSidebar, setShowSidebar] = useState<boolean>(false);
     const [showDropbar, setShowDropbar] = useState<boolean>(false);
     
     return (
-        <nav className="md:hidden block border bg-white w-full">
+        <nav className="md:hidden relative z-20 block border bg-white w-full">
             <div className="flex justify-between items-center bg-white w-full z-20 relative">
                 <div className="flex items-center">
                     {showSidebar ? (
                             <button
-                                className="flex text-6xl ml-3 mt-0 text-black items-center cursor-pointer"
+                                className="flex text-6xl ml-3 mr-[5px] mt-0 text-black items-center cursor-pointer"
                                 onClick={() => {
                                     setShowSidebar(!showSidebar)
                                     setShowDropbar(false)
@@ -55,7 +73,13 @@ export default function PopOutMenu (props: header) {
                                 <rect y="60" width="100" height="10"></rect>
                             </svg>
                     )}
-                    <img className="p-3" src={src} alt={altText}/>
+                    <ContentfulImage
+                        src={url}
+                        width={width}
+                        height={height}
+                        alt={altText}
+                        className={'!ml-5'}
+                    />
                 </div>
                 <div className="text-4xl mr-3 mdi mdi-dots-vertical" onClick={() => {
                     setShowDropbar(!showDropbar) 

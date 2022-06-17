@@ -18,8 +18,7 @@ function HeroImage (props: heroImageType) {
             textAlignment
         },
         sys,
-        metadata,
-        key
+        metadata
     } = props
 
     let contentAlignment = cn('', {

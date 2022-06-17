@@ -5,6 +5,7 @@ import RelatedBlog from "../Common/RelatedBlog";
 import BlogDetails from "../Common/BlogDetails";
 import RichTextComponent from "../Common/RichTextComponent";
 import { blogTypes } from "../../types/ContentTypes/blogTypes";
+import ContentfulImage from "../ContentfulImage";
 
 export default function Blog({ blog, allCategories, relatedPosts }: blogTypes) {
 
@@ -21,7 +22,12 @@ export default function Blog({ blog, allCategories, relatedPosts }: blogTypes) {
         <div className="content-wrap">
             <div className="flex flex-wrap my-10">
                 <article className="basis-3/4 flex flex-col space-y-5 pr-10">
-                    <Image src={thumbnail.url} width={thumbnail.width} height={thumbnail.height} loader={imageLoader}/>
+                    <ContentfulImage 
+                        src={thumbnail.url}
+                        width={thumbnail.width}
+                        height={thumbnail.height}
+                        alt={thumbnail.description}
+                    />
                     <h2>{title}</h2>
                     <BlogDetails date={date} categoryCollection={categoryCollection}/>
                     <hr/>
