@@ -11,9 +11,7 @@ export default function BlogList ({ blogs, totalPages, currentPage, allCategorie
     return (<div className="content-wrap">
         <div className="flex flex-wrap mt-10">
             <div className="flex flex-col space-y-10 basis-3/4">
-                {blogs.map((blog, index) => (
-                    <BlogComponent key={index} blog={blog}/>
-                ))}
+                {blogs.map((blog, index) => <BlogComponent key={index} blog={blog}/>)}
             </div>
             <div className="basis-1/4">
                 <CategoriesMenu categories={allCategories}/>

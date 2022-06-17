@@ -1,18 +1,24 @@
 import Link from "next/link"
-import imageLoader from "../../imageLoader"
-import Image from "next/image"
 import BlogDetails from "./BlogDetails"
 import { blogPreviewType } from "../../types/ContentTypes/blogComponentTypes"
+import ContentfulImage from "../ContentfulImage"
 
 export default function BlogComponent({ blog }: blogPreviewType) {
 
-    // console.log(blog)
+    // 
 
     const { thumbnail, title, categoryCollection, date, excerpt, slug } = blog;
 
+    // console.log(thumbnail)
+
     return (<div className="flex flex-wrap pr-10">
         <article className="flex flex-col space-y-5">
-            <Image src={thumbnail.url} width={thumbnail.width} height={thumbnail.height} loader={imageLoader}/>
+            <ContentfulImage 
+                src={thumbnail.url}
+                width={thumbnail.width}
+                height={thumbnail.height}
+                alt={thumbnail.description}
+            />
             <Link href={`/blog/${slug}`}>
                 <a>
                     <h2 className="m-0">{title}</h2>

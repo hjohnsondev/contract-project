@@ -1,7 +1,7 @@
 import { cardTypes } from "../../types/ContentTypes/setOfCardsTypes";
 import ContentfulImage from "../ContentfulImage";
 
-export default function Card ({ card, key, cardsInARow }: cardTypes) {
+export default function Card ({ card, cardsInARow }: cardTypes) {
     
     let image = card?.fields?.image?.fields.image.fields.file.url;
     let altText = card?.fields?.image?.fields.altText;
@@ -12,7 +12,7 @@ export default function Card ({ card, key, cardsInARow }: cardTypes) {
     let subText = card.fields.subText;
 
     return (
-        <div key={key} className={`card ${'basis-1/' + cardsInARow} ${image ? '' : 'card-with-icon'} `}>
+        <div className={`card ${`md:basis-1/${cardsInARow}`} ${image ? '' : 'card-with-icon'} `}>
             {!image && <div className={`card-icon mdi mdi-${icon}`}></div>}
             {image && 
                 <ContentfulImage 

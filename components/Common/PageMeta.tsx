@@ -52,7 +52,6 @@ export default function PageMeta(props) {
       />
       <link rel="manifest" href="/site.webmanifest" />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0f111a" />
-      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css"></link>
       <meta name="msapplication-TileColor" content="#b91d47" />
       <meta name="theme-color" content="#f11012" />
     </Head>

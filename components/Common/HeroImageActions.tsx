@@ -11,8 +11,7 @@ export default function HeroImageActions (props: heroImageType) {
             textAlignment
         },
         sys,
-        metadata,
-        key
+        metadata
     } = props
     
     let alignment = cn('flex justify-center', {

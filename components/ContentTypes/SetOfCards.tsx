@@ -14,8 +14,7 @@ function CardsSection (props: setOfCardTypes) {
             title = null
         },
         sys,
-        metadata,
-        key
+        metadata
     } = props
     
     const displayStyle = cn('flex p-5 flex-col', {

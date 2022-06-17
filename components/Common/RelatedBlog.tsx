@@ -2,13 +2,13 @@ import Link from "next/link";
 import type * as CSS from 'csstype';
 import { relatedPost } from "../../types/ContentTypes/blogTypes";
 
-export default function RelatedBlog ({ date, post, key }: { date: string, post: relatedPost, key: number }) {
+export default function RelatedBlog ({ date, post }: { date: string, post: relatedPost }) {
     let background: CSS.Properties = {
         'backgroundImage': `url(${post.thumbnail.url})`
     }
 
     return (
-        <div key={key} className="flex max-w-xs space-x-5 items-center mr-16 mb-5">
+        <div className="flex max-w-xs space-x-5 items-center mr-16 mb-5">
             <div className="bg-cover bg-center w-16 h-14 rounded-full" style={background}>
             </div>
             <div>
