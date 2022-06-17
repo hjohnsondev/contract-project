@@ -29,7 +29,7 @@ export default function Blog({ blog, allCategories, relatedPosts }: blogTypes) {
                     <div className="flex justify-between text-lg">
                        <p className="font-semibold">Share this post:</p> 
                        <div className="flex items-center">
-                            <a href=""><div className={`social-icon mdi mdi-facebook`}></div></a>
+                            <a href="**THESE WOULD BE MAPPED IF THERE WERE REAL LINKS**"><div className={`social-icon mdi mdi-facebook`}></div></a>
                             <a href=""><div className={`social-icon mdi mdi-twitter`}></div></a>
                             <a href=""><div className={`social-icon mdi mdi-google-plus`}></div></a>
                             <a href=""><div className={`social-icon mdi mdi-pinterest`}></div></a>

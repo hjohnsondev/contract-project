@@ -20,7 +20,7 @@ export default function BlogComponent({ blog }: blogPreviewType) {
             </Link>
             <BlogDetails date={date} categoryCollection={categoryCollection}/>
             <hr/>
-            <p className="text-gray-500 font-sans">{excerpt}</p>
+            <p className="text-gray-500">{excerpt}</p>
             <Link href={`/blog/${slug}`}>
                 <a>
                     <button className='btn blog-button'>Read More</button>

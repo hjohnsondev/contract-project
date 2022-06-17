@@ -41,10 +41,12 @@ module.exports = {
 				h1: {
 					fontSize: '3rem',
           			margin: '0px 0px 10px 0',
+					fontWeight: '800',
 				},
 				h2: {
 					fontSize: '2rem',
 					margin: '10px 0px 0px 0px',
+					fontWeight: '800',
 				},
 				h3: {
 					fontSize: '1.5rem',
