@@ -1,6 +1,5 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import HeroImageActions from '../Common/HeroImageActions';
-import cn from "classnames";
+import cn from "classnames"
 import DarkOverlay from '../Common/DarkOverlay';
 import RichTextComponent from '../Common/RichTextComponent';
 import { heroImageType } from '../../types/ContentTypes/heroImageTypes';
@@ -37,7 +36,7 @@ function HeroImage (props: heroImageType) {
     return (
         <div className="w-full relative">
             {darkenImage && <DarkOverlay/>}
-            <div className="w-full h-full absolute top-0 left-0">
+            <div className="w-full h-full absolute z-10 top-0 left-0">
                 <div className="content-wrap">
                     <div className={`flex ${contentAlignment} justify-center items-center h-full`}>
                         <div className="flex flex-col">
@@ -54,7 +53,7 @@ function HeroImage (props: heroImageType) {
                     width={null} //null due to layout === fill
                     height={null} //null due to layout === fill
                     alt={image?.fields?.altText}
-                    layout={'raw'}
+                    layout={'fill'}
                     objectFit={'cover'}
                     className={'-z-10'}
                 />

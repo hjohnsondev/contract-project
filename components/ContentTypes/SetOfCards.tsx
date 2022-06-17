@@ -1,4 +1,4 @@
-import cn from "classnames";
+import cn from "classnames"
 import { setOfCardTypes } from "../../types/ContentTypes/setOfCardsTypes";
 import Card from "../Common/Card";
 
@@ -11,7 +11,7 @@ function CardsSection (props: setOfCardTypes) {
             cardDisplayStyle, 
             cards, 
             cardsInARow, 
-            title = null 
+            title = null
         },
         sys,
         metadata,
@@ -19,7 +19,7 @@ function CardsSection (props: setOfCardTypes) {
     } = props
     
     const displayStyle = cn('flex p-5 flex-col', {
-        'md:flex-col md:justify-center md:space-y-16': cardDisplayStyle == "Vertical",
+        'md:justify-center md:space-y-16': cardDisplayStyle == "Vertical",
         'md:flex-wrap md:justify-around md:flex-row': cardsInARow < cards.length && cardDisplayStyle == "Horizontal",
         'md:space-x-10 md:justify-around md:flex-row': cardsInARow >= cards.length,
     })
