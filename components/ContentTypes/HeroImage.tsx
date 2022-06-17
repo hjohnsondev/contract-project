@@ -48,13 +48,13 @@ function HeroImage (props: heroImageType) {
                     </div>
                 </div>
             </div>
-            <div className="flex items-center min-h-[20rem] md:max-h-[50rem] md:overflow-hidden">
+            <div className="flex items-center min-h-[20rem] md:h-[50rem] md:overflow-hidden">
                 <ContentfulImage
                     src={image?.fields?.image?.fields?.file?.url}
                     width={null} //null due to layout === fill
                     height={null} //null due to layout === fill
                     alt={image?.fields?.altText}
-                    layout={'fill'}
+                    layout={'raw'}
                     objectFit={'cover'}
                     className={'-z-10'}
                 />
