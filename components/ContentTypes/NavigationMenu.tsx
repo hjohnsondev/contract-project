@@ -1,7 +1,7 @@
-import { menuTypes } from "../../types/ContentTypes/headerTypes"
+import { MenuProps } from "../../types/contentTypes"
 import NavigationItem from "../Common/NavigationItem"
 
-export default function NavigationMenu ({ navigationItems, icon }: menuTypes) {
+export default function NavigationMenu ({ navigationItems, icon }: MenuProps) {
     return (
         <nav className="hidden md:block bg-gray-800 w-full">
             <div className="content-wrap">

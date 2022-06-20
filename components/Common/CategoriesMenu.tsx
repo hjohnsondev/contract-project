@@ -1,6 +1,6 @@
 import Category from "./Category"
 
-export default function CategoriesMenu ({categories}: {categories: string[]}) {
+export default function CategoriesMenu ({ categories }: {categories: string[]}) {
     return (
         <div>
             {categories && <div>

@@ -127,7 +127,6 @@ export default function RichText ({ className, entry }) {
                 )
             }
         },
-        // convert \n to <br>
         renderText: convertNewLinetoBr,
     }
 

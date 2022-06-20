@@ -8,14 +8,17 @@ import Blog from "../../components/ContentTypes/Blog";
 import PreviewBanner from "../../components/Common/PreviewBanner";
 import Banner from "../../components/ContentTypes/Banner";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { SingleBlogPageProps } from "types/common";
 
-export default function BlogPage (props) {
+export default function BlogPage (props: SingleBlogPageProps) {
     const {
         blogContent,
         pageContent,
         allCategories,
         relatedPosts
     } = props;
+
+    // console.log(pageContent)
 
     const pageTitle = pageContent ? pageContent.title : "Blog";
     const pageDescription = pageContent

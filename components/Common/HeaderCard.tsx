@@ -1,6 +1,6 @@
-import { headerCard } from "../../types/ContentTypes/headerTypes";
+import { HeaderCardProps } from "../../types/contentTypes"
 
-export default function HeaderCard ({ card }: { card: { fields: headerCard }}) {
+export default function HeaderCard ({ card }: { card: HeaderCardProps }) {
     return (
         <div className="flex items-center ml-3 h-full">
             <div className={`mr-3 text-4xl text-sky-500 mdi mdi-${card?.fields?.materialDesignIcon?.fields?.iconName}`}></div>  

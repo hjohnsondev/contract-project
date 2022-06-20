@@ -1,10 +1,10 @@
-import { logoAndCards } from "../../types/ContentTypes/headerTypes"
+import { LogoAndCardsProps } from "../../types/contentTypes"
 import ContentfulImage from "../ContentfulImage"
 import HeaderCard from "./HeaderCard"
 
 // <img src={logo} alt={altText}/>
 
-export default function HeaderLogoAndCards ({ logo, logoCards }: logoAndCards) {
+export default function HeaderLogoAndCards ({ logo, logoCards }: LogoAndCardsProps) {
 
     const {
         fields: {

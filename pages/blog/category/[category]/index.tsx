@@ -4,8 +4,9 @@ import { GetStaticPaths, GetStaticProps } from "next";
 
 import BlogPageLayout from "../../../../components/Layouts/BlogPageLayout";
 import { Config } from "../../../../utils/Config";
+import { BlogPageProps } from "types/pageTypes";
 
-export default function BlogPage (props) {
+export default function BlogPage (props: BlogPageProps) {
     return (<BlogPageLayout {...props}/>) 
 }
 

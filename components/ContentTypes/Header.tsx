@@ -2,9 +2,9 @@ import HeaderLogoAndCards from "../Common/HeaderLogoAndCards";
 import HeaderTagline from "../Common/HeaderTagline";
 import NavigationMenu from "./NavigationMenu";
 import PopOutMenu from "../Common/PopOutMenu";
-import { header } from "../../types/ContentTypes/headerTypes";
+import { HeaderProps } from "../../types/contentTypes";
 
-function Header (props: header) {
+function Header (props: HeaderProps) {
 
     const {
         fields: {
@@ -22,7 +22,6 @@ function Header (props: header) {
 
     const tagLine = props.fields.tagline;
     const icons = actions;
-    const altText = logo?.fields?.image?.fields?.description;
     const navigationItems = navigationMenu?.fields?.navigationItems;
 
     return (

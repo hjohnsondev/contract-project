@@ -1,13 +1,11 @@
 import CategoriesMenu from "../Common/CategoriesMenu"
-import Image from "next/image"
-import imageLoader from "../../imageLoader"
 import RelatedBlog from "../Common/RelatedBlog";
 import BlogDetails from "../Common/BlogDetails";
 import RichTextComponent from "../Common/RichTextComponent";
-import { blogTypes } from "../../types/ContentTypes/blogTypes";
+import { BlogProps } from "../../types/contentTypes";
 import ContentfulImage from "../ContentfulImage";
 
-export default function Blog({ blog, allCategories, relatedPosts }: blogTypes) {
+export default function Blog({ blog, allCategories, relatedPosts }: BlogProps) {
 
     const { 
         thumbnail, 

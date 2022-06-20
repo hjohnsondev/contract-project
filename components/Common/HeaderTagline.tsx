@@ -1,7 +1,7 @@
-import { tagline } from "../../types/ContentTypes/headerTypes"
+import { TaglineProps } from "../../types/contentTypes"
 import HeaderIcon from "./HeaderIcon"
 
-export default function HeaderTagline ({ tagLine, icons }: tagline) {
+export default function HeaderTagline ({ tagLine, icons }: TaglineProps) {
     return (
         <div className="hidden md:block w-full bg-slate-100 top-0 left-0 relative h-full">
             <div className="content-wrap">

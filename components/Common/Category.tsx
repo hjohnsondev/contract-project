@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { navArrow } from "./SVG"
 
-export default function Category ({ category }: {category: string}) {
+export default function Category ({ category }: { category: string }) {
     
     return (
         <div>

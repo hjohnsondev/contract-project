@@ -1,6 +1,6 @@
-import { blogDetails } from "../../types/ContentTypes/blogComponentTypes"
+import { BlogDetailsProps } from "../../types/contentTypes"
 
-export default function BlogDetails ({ date, categoryCollection }: blogDetails) {
+export default function BlogDetails ({ date, categoryCollection }: BlogDetailsProps) {
     return (
         <div className="flex space-x-5">
             <span className="flex pr-5 border-r">
