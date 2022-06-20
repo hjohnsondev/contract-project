@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type * as CSS from 'csstype';
-import { relatedPost } from "../../types/ContentTypes/blogTypes";
+import { RelatedPostFields } from "../../types/contentTypes";
 
-export default function RelatedBlog ({ date, post }: { date: string, post: relatedPost }) {
+export default function RelatedBlog ({ date, post }: { date: string, post: RelatedPostFields }) {
     let background: CSS.Properties = {
         'backgroundImage': `url(${post.thumbnail.url})`
     }

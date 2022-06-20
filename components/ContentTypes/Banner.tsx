@@ -1,9 +1,9 @@
 import type * as CSS from 'csstype';
-import { bannerTypes } from '../../types/CommonTypes/bannerTypes';
+import { BannerProps } from '../../types/contentTypes';
 
-export default function Banner (props: bannerTypes) {
+export default function Banner (props: BannerProps) {
 
-    // console.log(bannerData);
+    // console.log(props.fields);
 
     const {
         fields: {

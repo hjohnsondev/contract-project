@@ -5,9 +5,9 @@ import Header from "../ContentTypes/Header";
 import Banner from "../ContentTypes/Banner";
 
 import { Config } from "../../utils/Config";
-import { blogListTypes } from "../../types/blogLanding";
+import { BlogPageProps } from "../../types/pageTypes";
 
-export default function BlogPageLayout (props: blogListTypes) {
+export default function BlogPageLayout (props: BlogPageProps) {
 
     const {
         blogSummaries,

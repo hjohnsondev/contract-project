@@ -1,9 +1,9 @@
 import Link from "next/link"
 import BlogDetails from "./BlogDetails"
-import { blogPreviewType } from "../../types/ContentTypes/blogComponentTypes"
+import { BlogPreviewProps } from "../../types/contentTypes";
 import ContentfulImage from "../ContentfulImage"
 
-export default function BlogComponent({ blog }: blogPreviewType) {
+export default function BlogComponent({ blog }: { blog: BlogPreviewProps }) {
 
     // 
 

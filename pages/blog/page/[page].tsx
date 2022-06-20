@@ -3,8 +3,9 @@ import { getTotalPostsNumber, getPaginatedPostSummaries, getAllCategories, fetch
 import { GetStaticPaths } from "next";
 
 import BlogPageLayout from "../../../components/Layouts/BlogPageLayout";
+import { BlogPageProps } from "types/pageTypes";
 
-export default function BlogIndexPage(props) {
+export default function BlogIndexPage(props: BlogPageProps) {
   return (<BlogPageLayout {...props}/>) 
 }
 

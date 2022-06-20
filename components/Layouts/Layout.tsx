@@ -5,13 +5,15 @@ import PreviewBanner from "../Common/PreviewBanner";
 import SectionCard from "../SectionCard";
 import MainLayout from "./MainLayout";
 import Meta from "../Common/Meta";
-import { landing } from "../../types/landing";
+import { LandingProps } from "types/pageTypes";
 
-export function Layout ({ landingData, preview }: landing) {
+export function Layout ({ landingData, preview }: LandingProps) {
 
-    const sections = landingData?.sections;
+    // console.log(landingData)
+
+    const sections = landingData?.fields?.sections;
     
-    const components = sections?.map((section: any, index: number) => {
+    const components = sections?.map((section, index: number) => {
         if (section.sys.contentType.sys.id == "header") return <Header key={index} {...section}/>
         if (section.sys.contentType.sys.id == "heroImage") return <HeroImage key={index} {...section}/>
         if (section.sys.contentType.sys.id == "setOfCard") return <SetOfCards key={index} {...section}/>

@@ -1,8 +1,8 @@
 import cn from "classnames"
-import { setOfCardTypes } from "../../types/ContentTypes/setOfCardsTypes";
+import { SetOfCardProps } from "../../types/contentTypes";
 import Card from "../Common/Card";
 
-function CardsSection (props: setOfCardTypes) {
+function CardsSection (props: SetOfCardProps) {
 
     // console.log(cardData);
 

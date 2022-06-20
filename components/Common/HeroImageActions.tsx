@@ -1,7 +1,7 @@
 import cn from "classnames"
-import { heroImageType } from "../../types/ContentTypes/heroImageTypes";
+import { HeroImageProps } from "../../types/contentTypes"
 
-export default function HeroImageActions (props: heroImageType) {
+export default function HeroImageActions (props: HeroImageProps) {
 
     const {
         fields: {

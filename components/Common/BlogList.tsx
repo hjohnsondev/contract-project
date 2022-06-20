@@ -1,9 +1,9 @@
 import Pagination from "../Pagination";
 import CategoriesMenu from "./CategoriesMenu";
 import BlogComponent from "./BlogComponent";
-import { blogListTypes } from "../../types/ContentTypes/blogComponentTypes";
+import { BlogListProps } from "../../types/contentTypes";
 
-export default function BlogList ({ blogs, totalPages, currentPage, allCategories }: blogListTypes) {
+export default function BlogList ({ blogs, totalPages, currentPage, allCategories }: BlogListProps) {
 
     const nextDisabled = parseInt(currentPage, 10) === parseInt(totalPages as string, 10);
     const prevDisabled = parseInt(currentPage, 10) === 1;

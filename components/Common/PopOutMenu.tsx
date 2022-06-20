@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { header } from "../../types/ContentTypes/headerTypes";
+import { HeaderProps } from "../../types/contentTypes";
 import ContentfulImage from "../ContentfulImage";
 import HeaderIcon from "./HeaderIcon";
 import NavigationItem from "./NavigationItem";
 
-export default function PopOutMenu (props: header) {
+export default function PopOutMenu (props: HeaderProps) {
     const {
         fields: {
             actions,
